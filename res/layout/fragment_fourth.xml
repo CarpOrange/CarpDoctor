@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="20dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="30dp" >
+	
+   <TextView
+       android:id="@+id/username"
+       android:layout_alignParentTop="true"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="30dp"
+       android:text="李昱辰"
+       android:textSize="16sp"
+       android:textColor="#2ACDF6" />
+   
+    <RelativeLayout
+        android:layout_below="@id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true" >
+        
+  
+        <TextView
+            android:id="@+id/medical_record"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:text="我的病历"
+            android:textColor="#51FF74"
+            android:background="@drawable/medical_record" />
+        <TextView
+            android:id="@+id/medicine_remind"
+            android:layout_toRightOf="@id/medical_record"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:text="用药提醒"
+            android:textColor="#51FF74"
+            android:background="@drawable/medicine_remind" />
+        <TextView
+            android:id="@+id/health_value"
+            android:layout_below="@id/medical_record"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:textColor="#51FF74"
+            android:text="健康情况"
+            android:background="@drawable/hehe" />
+        <TextView
+            android:id="@+id/other"
+            android:layout_toRightOf="@id/health_value"
+            android:layout_below="@id/medicine_remind"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:textColor="#51FF74"
+            android:text="其他"
+            android:background="@drawable/medical_record" />
+    </RelativeLayout>
+    
+    
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#45CC53"
+        android:text="登录/注册"
+        android:textColor="#ffffff" />
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#45CC53"
+        android:text="退出"
+        android:textColor="#ffffff"
+        android:visibility="gone" />
+</RelativeLayout>

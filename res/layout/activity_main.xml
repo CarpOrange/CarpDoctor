@@ -1,0 +1,132 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+	<LinearLayout
+	    android:id="@+id/navigatorBar"
+	    android:layout_width="match_parent"
+	    android:layout_height="48dp"
+	    android:orientation="horizontal"
+	    android:baselineAligned="false"
+	    android:layout_alignParentBottom="true"
+	    android:background="#000000" >
+	    
+	    <LinearLayout
+	        android:id="@+id/navigator_layout"
+    		android:layout_width="0dp"
+    		android:layout_height="match_parent"
+    		android:orientation="vertical"
+    		android:layout_marginRight="1dp"
+    		android:gravity="center"
+    		android:layout_weight="1"
+    		android:background="#000000" >
+    
+    		<ImageView
+        		android:id="@+id/navigator_icon"
+        		android:layout_width="28dp"
+        		android:layout_height="28dp"
+        		android:contentDescription="@string/hello_world"
+        		android:scaleType="centerCrop"
+        		android:src="@drawable/icon_tab0" />
+
+    		<TextView
+        		android:id="@+id/navigator_title"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:text="健康快递"
+        		android:textColor="@android:color/white"
+        		android:textSize="10sp" />
+    
+		</LinearLayout>
+		
+	    <LinearLayout
+	        android:id="@+id/navigator_layout1"
+    		android:layout_width="0dp"
+    		android:layout_height="match_parent"
+    		android:orientation="vertical"
+    		android:layout_marginRight="1dp"
+    		android:gravity="center"
+    		android:layout_weight="1"
+    		android:background="#353535" >
+    
+    		<ImageView
+        		android:id="@+id/navigator_icon_1"
+        		android:layout_width="28dp"
+        		android:layout_height="28dp"
+        		android:scaleType="centerCrop"
+        		android:contentDescription="@string/hello_world"
+        		android:src="@drawable/icon_tab1" />
+
+    		<TextView
+        		android:id="@+id/navigator_title_1"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:text="自助查询"
+        		android:textColor="@android:color/white"
+        		android:textSize="10sp" />
+    
+		</LinearLayout>
+		
+	    <LinearLayout
+	        android:id="@+id/navigator_layout2"
+    		android:layout_width="0dp"
+    		android:layout_height="match_parent"
+    		android:orientation="vertical"
+    		android:layout_marginRight="1dp"
+    		android:gravity="center"
+    		android:layout_weight="1"
+    		android:background="#353535"  >
+    
+    		<ImageView
+        		android:id="@+id/navigator_icon_2"
+        		android:layout_width="28dp"
+        		android:layout_height="28dp"
+        		android:scaleType="centerCrop"
+        		android:contentDescription="@string/hello_world"
+        		android:src="@drawable/icon_tab2" />
+
+    		<TextView
+        		android:id="@+id/navigator_title_2"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:text="强身健体"
+        		android:textColor="@android:color/white"
+        		android:textSize="10sp" />
+    
+		</LinearLayout>
+		
+	    <LinearLayout
+	        android:id="@+id/navigator_layout3"
+    		android:layout_width="0dp"
+    		android:layout_height="match_parent"
+    		android:orientation="vertical"
+    		android:gravity="center"
+    		android:layout_weight="1"
+    		android:background="#353535" >
+    
+    		<ImageView
+        		android:id="@+id/navigator_icon_3"
+        		android:layout_width="28dp"
+        		android:layout_height="28dp"
+        		android:scaleType="fitXY"
+        		android:contentDescription="@string/hello_world"
+        		android:src="@drawable/icon_tab3" />
+
+    		<TextView
+        		android:id="@+id/navigator_title_3"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:text="我的信息"
+        		android:textColor="@android:color/white"
+        		android:textSize="10sp" />
+    
+		</LinearLayout>
+		
+	</LinearLayout>
+	
+	<android.support.v4.view.ViewPager
+	    android:id="@+id/viewPager"
+	    android:layout_above="@id/navigatorBar"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"/>
+	
+</RelativeLayout>
