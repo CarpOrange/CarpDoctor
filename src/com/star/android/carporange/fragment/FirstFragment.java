@@ -5,10 +5,11 @@ import java.util.List;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,7 @@ import com.star.android.carporange.service.CoreService;
 
 public class FirstFragment extends Fragment {
 	
+	private static final int UPDATE_UI = 1;
 	private MainActivity mActivity; 
 	private View mContentView;
 	private ViewPager mViewPager;
@@ -32,6 +34,54 @@ public class FirstFragment extends Fragment {
 	private List<View> mList = new ArrayList<View>();
 	private CoreService.LoadBinder mLoadBinder;
 	private LayoutInflater mLayoutInflater;
+	
+	private TextView mTextViews[];
+	private Handler mHandler = new Handler() {
+		
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case UPDATE_UI:
+				for(int i = 0; i < 3; i ++) {
+					HealthInfo h = mHealthInfo.get(i);
+					View view = mLayoutInflater.inflate(R.layout.item_viewpager_fragment_first, null);
+					ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
+					TextView textView = (TextView) view.findViewById(R.id.textView);
+					h.getBmobFile().loadImage(mActivity, imageView);
+					textView.setText(h.getMainTitle());
+					mList.add(view); 
+				}
+				mViewPager.setAdapter(new PagerAdapter() {
+					
+					@Override
+					public boolean isViewFromObject(View arg0, Object arg1) {
+						return arg0 == arg1;
+					}
+					
+					@Override
+					public int getCount() {
+						return mList.size();
+					}
+					
+					@Override
+					public Object instantiateItem(ViewGroup container,
+							int position) {
+						container.addView(mList.get(position));
+						return mList.get(position);
+					}
+					
+					@Override
+					public void destroyItem(ViewGroup container, int position,
+							Object object) {
+						container.removeView(mList.get(position));
+					}
+				});
+				for(int i = 3; i < 17; i++) {
+					
+				}
+				break;
+			}
+		};
+	};
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,7 +102,7 @@ public class FirstFragment extends Fragment {
 	private void buildView() {
 		
 		mViewPager = (ViewPager) mContentView.findViewById(R.id.viewPager);
-		new MyAsyncTask().execute();
+		new MyThread().start();
 //		BmobQuery<HealthInfo> query = new BmobQuery<HealthInfo>();
 //		query.addWhereGreaterThan("num", -1);
 //		query.addWhereLessThan("num", 18);
@@ -105,10 +155,10 @@ public class FirstFragment extends Fragment {
 		
 	}
 	
-	class MyAsyncTask extends AsyncTask<Void, Integer, List<HealthInfo>> {
-		
+	class MyThread extends Thread {
 		@Override
-		protected List<HealthInfo> doInBackground(Void... arg0) {
+		public void run() {
+			super.run();
 			BmobQuery<HealthInfo> query = new BmobQuery<HealthInfo>();
 			query.addWhereGreaterThan("num", -1);
 			query.addWhereLessThan("num", 18);
@@ -117,52 +167,14 @@ public class FirstFragment extends Fragment {
 				
 				@Override
 				public void onSuccess(List<HealthInfo> healthInfo) {
-					Log.i("bb",	"qq132");
 					mHealthInfo = healthInfo;
+					Message message = new Message();
+					message.what = UPDATE_UI;
+					mHandler.sendMessage(message);
 				}
 				
 				@Override
 				public void onError(int arg0, String arg1) {
-					Log.i("bb",	"qq123");
-				}
-			});
-			return mHealthInfo;
-		}
-		
-		@Override
-		protected void onPostExecute(List<HealthInfo> result) {
-			super.onPostExecute(result);
-			for(HealthInfo h:result) {
-				View view = mLayoutInflater.inflate(R.layout.item_viewpager_fragment_first, null);
-				ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
-				TextView textView = (TextView) view.findViewById(R.id.textView);
-				h.getBmobFile().loadImage(mActivity, imageView);
-				textView.setText(h.getMainTitle());
-				mList.add(view); 
-			}
-			mViewPager.setAdapter(new PagerAdapter() {
-				
-				@Override
-				public boolean isViewFromObject(View arg0, Object arg1) {
-					return arg0 == arg1;
-				}
-				
-				@Override
-				public int getCount() {
-					return mList.size();
-				}
-				
-				@Override
-				public Object instantiateItem(ViewGroup container,
-						int position) {
-					container.addView(mList.get(position));
-					return mList.get(position);
-				}
-				
-				@Override
-				public void destroyItem(ViewGroup container, int position,
-						Object object) {
-					container.removeView(mList.get(position));
 				}
 			});
 		}
