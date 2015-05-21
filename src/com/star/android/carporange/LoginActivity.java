@@ -39,8 +39,6 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private void buildView() {
 		mNameText = (TextView) findViewById(R.id.userName);
 		mPasswordText = (TextView) findViewById(R.id.userPassword);
-		mRegisterText = (TextView) findViewById(R.id.register_text);
-		mRegisterText.setOnClickListener(this);
 		mLoginButton = (Button) findViewById(R.id.login_button);
 		mLoginButton.setOnClickListener(this);
 	}
@@ -85,9 +83,6 @@ public class LoginActivity extends Activity implements OnClickListener {
 				}});
 			break;
 		
-		case R.id.register_text:
-			Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
-			startActivityForResult(i, 1);
 		default:
 			break;
 		}

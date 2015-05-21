@@ -1,5 +1,6 @@
 package com.star.android.carporange.javabean;
 
+
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.datatype.BmobFile;
 
@@ -7,7 +8,7 @@ public class HealthInfo extends BmobObject {
 	
 	private String mainTitle;
 	private String content;
-	private BmobFile bmobFile;
+	private BmobFile image;
 	
 	public String getMainTitle() {
 		return mainTitle;
@@ -21,11 +22,11 @@ public class HealthInfo extends BmobObject {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public BmobFile getBmobFile() {
-		return bmobFile;
+	public BmobFile getImage() {
+		return image;
 	}
-	public void setBmobFile(BmobFile bmobFile) {
-		this.bmobFile = bmobFile;
+	public void setImage(BmobFile image) {
+		this.image = image;
 	}
 	
 }

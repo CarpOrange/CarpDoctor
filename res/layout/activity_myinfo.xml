@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="20dp"
+    android:orientation="vertical" >
+    <LinearLayout style="@style/Register_Input" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="姓名："
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/base_color_text_black" />
+        
+        <EditText
+            android:id="@+id/et_xingming"
+        	style="@style/Register_Edit"
+        	android:hint="请输入你的姓名。。。" />
+        
+    </LinearLayout>
+	
+    <LinearLayout style="@style/Register_Input" >
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="性别："
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/base_color_text_black" />
+        
+        <RadioGroup
+        	android:layout_width="match_parent"
+        	android:layout_height="match_parent"
+        	android:orientation="horizontal"
+        	android:gravity="center"  >
+        	<RadioButton
+            	android:id="@+id/radiobutton_male"
+            	android:text="男"
+            	android:layout_marginRight="50dp" />
+        	<RadioButton
+            	android:id="@+id/radiobutton_female"
+           		android:text="女" />
+    	</RadioGroup>
+    	
+    </LinearLayout>
+    
+    <LinearLayout style="@style/Register_Input" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="出生日期："
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/base_color_text_black" />
+        
+        <EditText
+            android:id="@+id/et_date_birth"
+        	style="@style/Register_Edit"
+        	android:enabled="false" />
+        
+        <Button
+            android:id="@+id/button_datePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="选择"
+            android:textColor="@color/base_color_text_black"
+            style="@android:attr/buttonStyleToggle" />
+        
+    </LinearLayout>
+    
+    <LinearLayout style="@style/Register_Input" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="身高（cm）："
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/base_color_text_black" />
+        
+        <EditText
+            android:id="@+id/et_height"
+        	style="@style/Register_Edit"
+        	android:hint="请输入你的身高。。。" />
+    </LinearLayout>
+    
+    <LinearLayout style="@style/Register_Input" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="体重（kg）："
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/base_color_text_black" />
+        
+        <EditText
+            android:id="@+id/et_weight"
+        	style="@style/Register_Edit"
+        	android:hint="请输入你的体重。。。" />
+    </LinearLayout>
+    
+    <Button
+        android:id="@+id/button_save"
+        android:layout_marginTop="40dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="保存"
+        android:textColor="#FFFFFF"
+        android:background="@color/green" />
+    
+</LinearLayout>

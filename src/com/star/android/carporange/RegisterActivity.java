@@ -12,6 +12,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.listener.CountListener;
 import cn.bmob.v3.listener.SaveListener;
 
 import com.star.android.carporange.javabean.User;
@@ -46,37 +48,59 @@ public class RegisterActivity extends Activity {
 				mPassword = mPasswordText.getText().toString();
 				mRepeatPassword = mRepeatPasswordText.getText().toString();
 				if(!TextUtils.isEmpty(mUsername) && !TextUtils.isEmpty(mPassword) && !TextUtils.isEmpty(mRepeatPassword)) {
-					if(mRepeatPassword.equals(mPassword)) {
-						User u = new User();
-						u.setUsername(mUsername);
-						u.setPassword(mPassword);
-						u.save(RegisterActivity.this,new SaveListener() {
-							
-							@Override
-							public void onSuccess() {
-								Toast.makeText(RegisterActivity.this, "注册成功^_^", Toast.LENGTH_LONG).show();
-								SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(RegisterActivity.this);
-								Editor editor = sp.edit();
-								editor.putString("username", mUsername);
-								editor.putString("password", mPassword);
-								editor.commit();
-								Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
-								RegisterActivity.this.setResult(2, i);
-								RegisterActivity.this.finish();
+					BmobQuery<User> query = new BmobQuery<User>();
+					query.addWhereEqualTo("username", mUsername);
+					query.count(RegisterActivity.this, User.class, new CountListener() {
+						
+						@Override
+						public void onSuccess(int count) {
+							if(count > 0) {
+								Toast.makeText(RegisterActivity.this, "此用户名已经存在了", Toast.LENGTH_LONG).show();
+							} else {
+								register();
 							}
-							
-							@Override
-							public void onFailure(int arg0, String arg1) {
-								Toast.makeText(RegisterActivity.this, "注册失败啦/(ㄒoㄒ)/~~", Toast.LENGTH_LONG).show();
-							}
-						});
-					} else {
-						Toast.makeText(RegisterActivity.this, "两次输入的密码不一致哦~", Toast.LENGTH_LONG).show();
-					}
+						}
+						
+						@Override
+						public void onFailure(int arg0, String arg1) {
+							Toast.makeText(RegisterActivity.this, "注册失败啦/(ㄒoㄒ)/~~", Toast.LENGTH_LONG).show();
+						}
+					});
+					
+					
 				} else {
 					Toast.makeText(RegisterActivity.this, "输入框不能为空", Toast.LENGTH_LONG).show();
 				}
 			}
 		});
+	}
+	private void register() {
+		if(mRepeatPassword.equals(mPassword)) {
+			User u = new User();
+			u.setUsername(mUsername);
+			u.setPassword(mPassword);
+			u.save(RegisterActivity.this,new SaveListener() {
+				
+				@Override
+				public void onSuccess() {
+					Toast.makeText(RegisterActivity.this, "注册成功^_^", Toast.LENGTH_LONG).show();
+					SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(RegisterActivity.this);
+					Editor editor = sp.edit();
+					editor.putString("username", mUsername);
+					editor.putString("password", mPassword);
+					editor.commit();
+					Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+					RegisterActivity.this.setResult(2, i);
+					RegisterActivity.this.finish();
+				}
+				
+				@Override
+				public void onFailure(int arg0, String arg1) {
+					Toast.makeText(RegisterActivity.this, "注册失败啦/(ㄒoㄒ)/~~", Toast.LENGTH_LONG).show();
+				}
+			});
+		} else {
+			Toast.makeText(RegisterActivity.this, "两次输入的密码不一致哦~", Toast.LENGTH_LONG).show();
+		}
 	}
 }

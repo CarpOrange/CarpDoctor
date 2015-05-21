@@ -22,6 +22,7 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import cn.bmob.v3.Bmob;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.star.android.carporange.fragment.FirstFragment;
 import com.star.android.carporange.fragment.FourthFragment;
 import com.star.android.carporange.fragment.SecondFragment;
@@ -54,6 +55,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Bmob.initialize(this, "41c59442c6ffdc8b30fd071d273fdd38");
+		SDKInitializer.initialize(getApplicationContext());
 		Intent bindIntent = new Intent(this, CoreService.class);
 		bindService(bindIntent, conn, BIND_AUTO_CREATE);
 		buildView();
@@ -159,6 +161,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				getSupportFragmentManager()));
 		mViewPager.setOnPageChangeListener(new MyPageChangeListener());
 		
+		mViewPager.setOffscreenPageLimit(4);
 		mButtons = new LinearLayout[] {
 				(LinearLayout) findViewById(R.id.navigator_layout),
 				(LinearLayout) findViewById(R.id.navigator_layout1),

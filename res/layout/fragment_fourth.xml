@@ -1,86 +1,272 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="20dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingBottom="30dp" >
-	
-   <TextView
-       android:id="@+id/username"
-       android:layout_alignParentTop="true"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_marginLeft="30dp"
-       android:text="李昱辰"
-       android:textSize="16sp"
-       android:textColor="#2ACDF6" />
-   
-    <RelativeLayout
-        android:layout_below="@id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true" >
+    android:orientation="vertical"
+    android:weightSum="13" >
+    
+	<RelativeLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="3"
+	    android:background="#FFFFFF" >
+	    <TextView
+	        android:id="@+id/tv_login"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="5dp"
+	        android:layout_marginLeft="30dp"
+	        android:layout_marginRight="30dp"
+	        android:text="登录后可以使用以下功能，上传信息到云端，无须担心丢失信息." />
+	   	<LinearLayout
+	   	    android:id="@+id/llyt_login"
+	   	    android:layout_below="@id/tv_login"
+	   	    android:layout_width="match_parent"
+	   	    android:layout_height="match_parent"
+	   	    android:gravity="center" >
+	   	    <Button
+        		android:id="@+id/login_button"
+        		android:layout_width="80dp"
+        		android:layout_height="40dp"
+        		android:background="#E5E5E5"
+        		style="?android:attr/buttonStyleToggle"
+        		android:text="登录"
+        		android:textColor="#616161" />
+	   	    
+	    	<Button
+        		android:id="@+id/register_button"
+        		android:layout_width="120dp"
+        		android:layout_height="40dp"
+        		android:layout_marginLeft="20dp"
+        		style="?android:attr/buttonStyleToggle"
+        		android:background="#E5E5E5"
+        		android:text="立即注册"
+        		android:textColor="@color/green" />
+	    
+	   	</LinearLayout>
+	    <RelativeLayout
+	        android:id="@+id/rlyt_username"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:visibility="gone" >
+	        <ImageView
+	        	android:id="@+id/iv_avatar"
+	        	android:layout_width="80dp"
+	        	android:layout_height="60dp"
+	        	android:layout_marginLeft="30dp"
+	        	android:layout_centerVertical="true"
+	        	android:scaleType="fitXY"
+	        	android:src="@drawable/gintama"
+	        	android:contentDescription="@null" />
+	    	<TextView
+	        	android:id="@+id/tv_username"
+	        	android:layout_toRightOf="@id/iv_avatar"
+	        	android:layout_width="100dp"
+	        	android:layout_height="wrap_content"
+	        	android:layout_centerVertical="true"
+	        	android:layout_marginLeft="30dp"
+	        	android:text="李昱辰"
+	        	android:textSize="22sp" />
+	    	<ImageView
+	        	android:layout_width="40dp"
+	        	android:layout_height="40dp"
+	        	android:layout_centerVertical="true"
+	        	android:layout_alignParentRight="true"
+	        	android:src="@drawable/icon_next"
+	        	android:contentDescription="@null" />
+	    </RelativeLayout>
+	    
+	    <ImageView
+	        android:layout_width="match_parent"
+	        android:layout_height="0.5dp"
+	        android:layout_alignParentBottom="true"
+	        android:background="@color/divider_color"
+	        android:contentDescription="@null" />
+	</RelativeLayout>
+   	
+	<RelativeLayout
+            android:id="@+id/rlyt_medical_record"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="#FFFFFF" >
+            
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/medical_record"
+                android:contentDescription="@null" />
+            
+            <TextView
+                android:layout_toRightOf="@id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"
+                android:text="我的病历"
+                android:textSize="20sp" />
+            
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/icon_next"
+                android:contentDescription="@null" />
+            
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_color"
+                android:layout_alignParentBottom="true"
+                android:contentDescription="@null" />
+                
+        </RelativeLayout>
+    
+        <RelativeLayout
+            android:id="@+id/rlyt_medicine_remind"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="#FFFFFF" >
+            
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/medicine_remind"
+                android:contentDescription="@null" />
+            
+            <TextView
+                android:layout_toRightOf="@id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"
+                android:text="用药提醒"
+                android:textSize="20sp" />
+            
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/icon_next"
+                android:contentDescription="@null" />
+            
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_color"
+                android:layout_alignParentBottom="true"
+                android:contentDescription="@null" />
+                
+        </RelativeLayout>
+    
+    	<RelativeLayout
+            android:id="@+id/rlyt_health_value"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="#FFFFFF" >
+            
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/health_value"
+                android:contentDescription="@null" />
+            
+            <TextView
+                android:layout_toRightOf="@id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"
+                android:text="健康情况"
+                android:textSize="20sp" />
+            
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/icon_next"
+                android:contentDescription="@null" />
+            
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_color"
+                android:layout_alignParentBottom="true"
+                android:contentDescription="@null" />
+                
+        </RelativeLayout>
         
-  
-        <TextView
-            android:id="@+id/medical_record"
-            android:layout_width="140dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:text="我的病历"
-            android:textColor="#51FF74"
-            android:background="@drawable/medical_record" />
-        <TextView
-            android:id="@+id/medicine_remind"
-            android:layout_toRightOf="@id/medical_record"
-            android:layout_width="140dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:text="用药提醒"
-            android:textColor="#51FF74"
-            android:background="@drawable/medicine_remind" />
-        <TextView
-            android:id="@+id/health_value"
-            android:layout_below="@id/medical_record"
-            android:layout_width="140dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:textColor="#51FF74"
-            android:text="健康情况"
-            android:background="@drawable/hehe" />
-        <TextView
-            android:id="@+id/other"
-            android:layout_toRightOf="@id/health_value"
-            android:layout_below="@id/medicine_remind"
-            android:layout_width="140dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:textColor="#51FF74"
-            android:text="其他"
-            android:background="@drawable/medical_record" />
-    </RelativeLayout>
+    	<RelativeLayout
+            android:id="@+id/rlyt_other"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="#FFFFFF" >
+            
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/other"
+                android:contentDescription="@null" />
+            
+            <TextView
+                android:layout_toRightOf="@id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"
+                android:text="其他"
+                android:textSize="20sp" />
+            
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/icon_next"
+                android:contentDescription="@null" />
+            
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_color"
+                android:layout_alignParentBottom="true"
+                android:contentDescription="@null" />
+                
+        </RelativeLayout>
+      
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+        
+        <Button
+       		android:id="@+id/logout_button"
+        	android:layout_width="120dp"
+        	android:layout_height="50dp"
+        	android:background="#E5E5E5"
+        	android:layout_gravity="center"
+        	android:text="退出"
+        	android:textColor="#000000"
+        	android:visibility="gone" />
+        
+    </FrameLayout>
     
-    
-    <Button
-        android:id="@+id/login_button"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="#45CC53"
-        android:text="登录/注册"
-        android:textColor="#ffffff" />
-    <Button
-        android:id="@+id/logout_button"
-        android:layout_width="250dp"
-        android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#45CC53"
-        android:text="退出"
-        android:textColor="#ffffff"
-        android:visibility="gone" />
-</RelativeLayout>
+</LinearLayout>

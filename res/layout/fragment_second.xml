@@ -21,6 +21,7 @@
         android:orientation="vertical" >
         
         <RelativeLayout
+            android:id="@+id/rlyt_symptom"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" >
@@ -53,7 +54,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     android:text="症状图解"
                     android:textSize="20sp" />
                 
@@ -83,6 +84,7 @@
         </RelativeLayout>
         
         <RelativeLayout
+            android:id="@+id/rlyt_illness"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" >
@@ -108,7 +110,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     android:text="疾病库"
                     android:textSize="20sp" />
                 
@@ -138,6 +140,7 @@
         </RelativeLayout>
         
         <RelativeLayout
+            android:id="@+id/rlyt_medicine"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" >
@@ -163,7 +166,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     android:text="药品库"
                     android:textSize="20sp" />
                 
@@ -193,6 +196,7 @@
         </RelativeLayout>
         
         <RelativeLayout
+            android:id="@+id/rlyt_ambitus"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" >
@@ -218,7 +222,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     android:text="周边诊所"
                     android:textSize="20sp" />
                 
