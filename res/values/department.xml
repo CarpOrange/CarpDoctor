@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="departmentArray">
+        <item>普外科</item>
+        <item>泌尿外科</item>
+        <item>风湿免疫科</item>
+        <item>眼科</item>
+        <item>耳鼻咽喉科</item>
+        <item>神经内科</item>
+        <item>心血管内科</item>
+        <item>消化内科</item>
+        <item>内分泌与代谢科</item>
+        <item>呼吸内科</item>
+        <item>性病科</item>
+        <item>皮肤科</item>
+        <item>肝胆外科</item>
+    </string-array>
+</resources>

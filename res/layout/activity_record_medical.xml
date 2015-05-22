@@ -5,8 +5,9 @@
     android:paddingBottom="50dp" >
     
     <Button
+        android:id="@+id/button_record_new"
         android:layout_width="180dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:background="@color/green"

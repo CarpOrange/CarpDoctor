@@ -75,6 +75,9 @@
         <activity
             android:name="com.star.android.carporange.HealthValueActivity" >
         </activity>
+        <activity
+            android:name="com.star.android.carporange.NewRecordActivity" >
+        </activity>
         
         <service
             android:name="com.star.android.carporange.service.CoreService" >

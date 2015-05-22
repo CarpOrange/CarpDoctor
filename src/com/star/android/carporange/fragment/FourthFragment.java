@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.star.android.carporange.HealthValueActivity;
 import com.star.android.carporange.LoginActivity;
 import com.star.android.carporange.MainActivity;
+import com.star.android.carporange.MedicalRecordActivity;
 import com.star.android.carporange.MyInfoActivity;
 import com.star.android.carporange.R;
 import com.star.android.carporange.RegisterActivity;
@@ -68,6 +69,7 @@ public class FourthFragment extends Fragment implements OnClickListener {
 		
 		mUsernameRlyt.setOnClickListener(this);
 		mHealthValueRlyt.setOnClickListener(this);
+		mMedicalRecordRlyt.setOnClickListener(this);
 	}
 
 	private void buildView() {
@@ -142,6 +144,11 @@ public class FourthFragment extends Fragment implements OnClickListener {
 			break;
 		case R.id.rlyt_health_value:
 			i = new Intent(mActivity, HealthValueActivity.class);
+			i.putExtra("username", mUsernameText.getText().toString());
+			startActivity(i);
+			break;
+		case R.id.rlyt_medical_record:
+			i = new Intent(mActivity, MedicalRecordActivity.class);
 			i.putExtra("username", mUsernameText.getText().toString());
 			startActivity(i);
 			break;
