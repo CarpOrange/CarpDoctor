@@ -35,8 +35,7 @@
         <Spinner
             android:id="@+id/spinner_department"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:entries="@array/departmentArray" />
+            android:layout_height="match_parent" />
         
     </LinearLayout>
 	
@@ -117,8 +116,19 @@
     <ImageView
         android:id="@+id/iv_pictrue"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_margin="10dp"
         android:contentDescription="@null" />
+    
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/green"
+        android:text="保存"
+        android:textColor="#FFFFFF" />
     
 </LinearLayout>

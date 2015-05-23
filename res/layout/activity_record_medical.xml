@@ -2,7 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="50dp" >
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="30dp" >
+    
     
     <Button
         android:id="@+id/button_record_new"
@@ -15,4 +18,11 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
 	
+    <ListView
+        android:id="@+id/listView"
+        android:layout_above="@id/button_record_new"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp" />
+    
 </RelativeLayout>

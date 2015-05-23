@@ -20,6 +20,7 @@ import com.star.android.carporange.HealthValueActivity;
 import com.star.android.carporange.LoginActivity;
 import com.star.android.carporange.MainActivity;
 import com.star.android.carporange.MedicalRecordActivity;
+import com.star.android.carporange.MedicineRemindActivity;
 import com.star.android.carporange.MyInfoActivity;
 import com.star.android.carporange.R;
 import com.star.android.carporange.RegisterActivity;
@@ -70,6 +71,7 @@ public class FourthFragment extends Fragment implements OnClickListener {
 		mUsernameRlyt.setOnClickListener(this);
 		mHealthValueRlyt.setOnClickListener(this);
 		mMedicalRecordRlyt.setOnClickListener(this);
+		mMedicineRemindRlyt.setOnClickListener(this);
 	}
 
 	private void buildView() {
@@ -100,17 +102,9 @@ public class FourthFragment extends Fragment implements OnClickListener {
 		mPassword = sp.getString("password", "");
 		
 		if (!mUsername.equals("") && !mPassword.equals("")) {
-			
-			mUsernameText.setText(mUsername);
-			mLoginLlyt.setVisibility(View.GONE);
-			mLoginText.setVisibility(View.GONE);
-			mUsernameRlyt.setVisibility(View.VISIBLE);
-			mLogoutButton.setVisibility(View.VISIBLE);
+			setVisible(true);
 		} else {
-			mLoginLlyt.setVisibility(View.VISIBLE);
-			mLoginText.setVisibility(View.VISIBLE);
-			mUsernameRlyt.setVisibility(View.GONE);
-			mLogoutButton.setVisibility(View.GONE);
+			setVisible(false);
 		}
 	}
 
@@ -133,9 +127,8 @@ public class FourthFragment extends Fragment implements OnClickListener {
 			Editor editor = sp.edit();
 			editor.putString("password", "");
 			editor.commit();
-			mLoginLlyt.setVisibility(View.VISIBLE);
-			mUsernameRlyt.setVisibility(View.GONE);
-			mLogoutButton.setVisibility(View.GONE);
+			mUsername = null;
+			setVisible(false);
 			break;
 		case R.id.rlyt_username:
 			i = new Intent(mActivity, MyInfoActivity.class);
@@ -152,11 +145,38 @@ public class FourthFragment extends Fragment implements OnClickListener {
 			i.putExtra("username", mUsernameText.getText().toString());
 			startActivity(i);
 			break;
+		case R.id.rlyt_medicine_remind:
+			i = new Intent(mActivity,MedicineRemindActivity.class);
+			i.putExtra("username", mUsernameText.getText().toString());
+			startActivity(i);
 		default:
 			break;
 		}
 	}
 	
+	private void setVisible(boolean isVisible) {
+		if(isVisible) {
+			mUsernameText.setText(mUsername);
+			mLoginText.setVisibility(View.GONE);
+			mLoginLlyt.setVisibility(View.GONE);
+			mUsernameRlyt.setVisibility(View.VISIBLE);
+			mMedicalRecordRlyt.setVisibility(View.VISIBLE);
+			mHealthValueRlyt.setVisibility(View.VISIBLE);
+			mMedicineRemindRlyt.setVisibility(View.VISIBLE);
+			mOtherRlyt.setVisibility(View.VISIBLE);
+			mLogoutButton.setVisibility(View.VISIBLE);
+		} else {
+			mLoginText.setVisibility(View.VISIBLE);
+			mLoginLlyt.setVisibility(View.VISIBLE);
+			mUsernameRlyt.setVisibility(View.GONE);
+			mMedicalRecordRlyt.setVisibility(View.GONE);
+			mHealthValueRlyt.setVisibility(View.GONE);
+			mMedicineRemindRlyt.setVisibility(View.GONE);
+			mOtherRlyt.setVisibility(View.GONE);
+			mLogoutButton.setVisibility(View.GONE);
+		}
+	}
+
 	@Override
 	public void onResume() {
 		super.onResume();

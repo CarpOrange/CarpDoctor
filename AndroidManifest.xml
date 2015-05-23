@@ -78,6 +78,12 @@
         <activity
             android:name="com.star.android.carporange.NewRecordActivity" >
         </activity>
+        <activity
+            android:name="com.star.android.carporange.MedicineRemindActivity">
+        </activity>
+        <activity
+            android:name="com.star.android.carporange.NewRemindActivity" >
+        </activity>
         
         <service
             android:name="com.star.android.carporange.service.CoreService" >
