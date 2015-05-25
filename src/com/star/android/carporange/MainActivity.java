@@ -60,7 +60,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		bindService(bindIntent, conn, BIND_AUTO_CREATE);
 		buildView();
 	}
-
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		unbindService(conn);
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);

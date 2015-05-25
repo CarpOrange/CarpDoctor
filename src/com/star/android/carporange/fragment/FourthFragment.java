@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.AlarmClock;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -146,8 +147,9 @@ public class FourthFragment extends Fragment implements OnClickListener {
 			startActivity(i);
 			break;
 		case R.id.rlyt_medicine_remind:
-			i = new Intent(mActivity,MedicineRemindActivity.class);
-			i.putExtra("username", mUsernameText.getText().toString());
+//			i = new Intent(mActivity,MedicineRemindActivity.class);
+//			i.putExtra("username", mUsernameText.getText().toString());
+			i = new Intent(AlarmClock.ACTION_SET_ALARM);
 			startActivity(i);
 		default:
 			break;

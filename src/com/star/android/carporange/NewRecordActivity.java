@@ -256,6 +256,8 @@ public class NewRecordActivity extends Activity implements OnClickListener {
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
+			} else {
+				mImagePath = null;
 			}
 			break;
 		}

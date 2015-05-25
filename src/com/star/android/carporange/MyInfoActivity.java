@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -162,7 +163,7 @@ public class MyInfoActivity extends Activity implements OnClickListener{
 				
 				@Override
 				public void onSuccess() {
-					Toast.makeText(MyInfoActivity.this, "±£´æ³É¹¦", Toast.LENGTH_SHORT).show();
+					finish();
 				}
 				
 				@Override

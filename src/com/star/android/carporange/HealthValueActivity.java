@@ -106,15 +106,15 @@ public class HealthValueActivity extends Activity {
 		private void updateSuggestionText() {
 			String suggestion = null;
 			if(mHabitusValue.equals("偏瘦")) {
-				suggestion = "2";
+				suggestion = "哎呦，有点瘦哟，多喝点牛奶";
 			} else if(mHabitusValue.equals("标准")) {
-				suggestion = "3";
+				suggestion = "羡慕你，完美身材";
 			} else if(mHabitusValue.equals("微胖")) {
-				suggestion = "4";
+				suggestion = "你是一个有点肉的骚年";
 			} else if(mHabitusValue.equals("胖虎")) {
-				suggestion = "5";
+				suggestion = "今年的相扑比赛你报名了吗";
 			} else if(mHabitusValue.equals("火柴棍")) {
-				suggestion = "1";
+				suggestion = "火柴棍也学会用手机了吗？";
 			}
 			mSuggestionTextView.setText(suggestion);
 		}

@@ -1,9 +1,14 @@
 package com.star.android.carporange.service;
 
+import java.util.Calendar;
 import java.util.List;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
@@ -16,11 +21,16 @@ public class CoreService extends Service {
 	
 	private LoadBinder mBinder = new LoadBinder();
 	private List<HealthInfo> mHealthInfo;
+	private String mDetail;
+	private AlarmManager mAm;
+	private Calendar mCalendar;
+	
 	public class LoadBinder extends Binder {
 		
-		public List<HealthInfo> startLoadHealthInfo() {
+		public void startLoadHealthInfo(String detail, Calendar calendar) {
+			mDetail = detail;
+			mCalendar = calendar;
 			new MyThread().start();
-			return mHealthInfo;
 		}
 	}
 	
@@ -52,7 +62,11 @@ public class CoreService extends Service {
 		
 		@Override
 		public void run() {
-			
+			Intent intent = new Intent(CoreService.this, MyTimeReceiver.class);
+			intent.putExtra("detail", mDetail);
+			PendingIntent pendingIntent = PendingIntent.getBroadcast(CoreService.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+			mAm = (AlarmManager) getSystemService(ALARM_SERVICE);
+			mAm.setRepeating(AlarmManager.RTC_WAKEUP, mCalendar.getTimeInMillis(), 24*60*60*1000, pendingIntent);
 		}
 	}
 	
