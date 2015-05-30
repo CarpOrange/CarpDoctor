@@ -50,7 +50,7 @@ public class HealthValueActivity extends Activity {
 		BmobQuery<User> query = new BmobQuery<User>("User");
 		query.addWhereEqualTo("username", userName);
 		query.findObjects(HealthValueActivity.this, new FindListener<User>() {
-			
+
 			@Override
 			public void onSuccess(List<User> list) {
 				double habitus;
@@ -58,33 +58,35 @@ public class HealthValueActivity extends Activity {
 				Integer height = list.get(0).getHeight();
 				Integer weight = list.get(0).getWeight();
 				String sex = list.get(0).getSex();
-				if(height != null && weight != null && !TextUtils.isEmpty(sex)) {
+				if (height != null && weight != null && !TextUtils.isEmpty(sex)) {
 					int h = (int) height;
 					int w = (int) weight;
-					if(sex.equals("ÄÐ")) {
-						habitus = (h*h/10000.0*22 - w)/(h*h/10000.0*22);
+					if (sex.equals("ÄÐ")) {
+						habitus = (h * h / 10000.0 * 22 - w)
+								/ (h * h / 10000.0 * 22);
 					} else {
-						habitus = (h*h/10000.0*20 - w)/(h*h/10000.0*20);
-					}	
-					if(habitus > 0.1 && habitus < 0.2) {
+						habitus = (h * h / 10000.0 * 20 - w)
+								/ (h * h / 10000.0 * 20);
+					}
+					if (habitus > 0.1 && habitus < 0.2) {
 						mHabitusValue = "Æ«ÊÝ";
-					} else if(habitus > 0.2) {
+					} else if (habitus > 0.2) {
 						mHabitusValue = "»ð²ñ¹÷";
-					} else if(habitus < -0.1 && habitus > -0.2) {
+					} else if (habitus < -0.1 && habitus > -0.2) {
 						mHabitusValue = "Î¢ÅÖ";
-					} else if(habitus < -0.2) {
+					} else if (habitus < -0.2) {
 						mHabitusValue = "ÅÖ»¢";
 					} else {
 						mHabitusValue = "±ê×¼";
 					}
-					
+
 					mHandler.sendEmptyMessage(UPDATE_UI);
 				}
 			}
-			
+
 			@Override
 			public void onError(int arg0, String arg1) {
-				
+
 			}
 		});
 	}

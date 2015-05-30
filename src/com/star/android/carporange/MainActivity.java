@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 import cn.bmob.v3.Bmob;
 
 import com.baidu.mapapi.SDKInitializer;
@@ -64,7 +65,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		unbindService(conn);
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

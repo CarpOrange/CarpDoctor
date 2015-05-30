@@ -41,35 +41,42 @@ public class RegisterActivity extends Activity {
 		mRepeatPasswordText = (EditText) findViewById(R.id.repeat_password);
 		mRegisterButton = (Button) findViewById(R.id.register_button);
 		mRegisterButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				mUsername = mUsernameText.getText().toString();
 				mPassword = mPasswordText.getText().toString();
 				mRepeatPassword = mRepeatPasswordText.getText().toString();
-				if(!TextUtils.isEmpty(mUsername) && !TextUtils.isEmpty(mPassword) && !TextUtils.isEmpty(mRepeatPassword)) {
+				if (!TextUtils.isEmpty(mUsername)
+						&& !TextUtils.isEmpty(mPassword)
+						&& !TextUtils.isEmpty(mRepeatPassword)) {
 					BmobQuery<User> query = new BmobQuery<User>();
 					query.addWhereEqualTo("username", mUsername);
-					query.count(RegisterActivity.this, User.class, new CountListener() {
-						
-						@Override
-						public void onSuccess(int count) {
-							if(count > 0) {
-								Toast.makeText(RegisterActivity.this, "此用户名已经存在了", Toast.LENGTH_LONG).show();
-							} else {
-								register();
-							}
-						}
-						
-						@Override
-						public void onFailure(int arg0, String arg1) {
-							Toast.makeText(RegisterActivity.this, "注册失败啦/(ㄒoㄒ)/~~", Toast.LENGTH_LONG).show();
-						}
-					});
-					
-					
+					query.count(RegisterActivity.this, User.class,
+							new CountListener() {
+
+								@Override
+								public void onSuccess(int count) {
+									if (count > 0) {
+										Toast.makeText(RegisterActivity.this,
+												"此用户名已经存在了", Toast.LENGTH_LONG)
+												.show();
+									} else {
+										register();
+									}
+								}
+
+								@Override
+								public void onFailure(int arg0, String arg1) {
+									Toast.makeText(RegisterActivity.this,
+											"注册失败啦/(ㄒoㄒ)/~~", Toast.LENGTH_LONG)
+											.show();
+								}
+							});
+
 				} else {
-					Toast.makeText(RegisterActivity.this, "输入框不能为空", Toast.LENGTH_LONG).show();
+					Toast.makeText(RegisterActivity.this, "输入框不能为空",
+							Toast.LENGTH_LONG).show();
 				}
 			}
 		});
@@ -83,13 +90,16 @@ public class RegisterActivity extends Activity {
 				
 				@Override
 				public void onSuccess() {
-					Toast.makeText(RegisterActivity.this, "注册成功^_^", Toast.LENGTH_LONG).show();
-					SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(RegisterActivity.this);
+					Toast.makeText(RegisterActivity.this, "注册成功^_^",
+							Toast.LENGTH_LONG).show();
+					SharedPreferences sp = PreferenceManager
+							.getDefaultSharedPreferences(RegisterActivity.this);
 					Editor editor = sp.edit();
 					editor.putString("username", mUsername);
 					editor.putString("password", mPassword);
 					editor.commit();
-					Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+					Intent i = new Intent(RegisterActivity.this,
+							LoginActivity.class);
 					RegisterActivity.this.setResult(2, i);
 					RegisterActivity.this.finish();
 				}

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <LinearLayout style="@style/Register_Input" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="年龄："
+            android:textSize="18sp"
+            android:textColor="@color/base_color_text_black" />
+        
+        <EditText
+            android:id="@+id/et_age"
+        	style="@style/Register_Edit"
+        	android:hint="" />
+        <RadioGroup
+        	android:layout_width="wrap_content"
+        	android:layout_height="match_parent"
+        	android:orientation="horizontal"
+        	android:gravity="center"  >
+        	<RadioButton
+            	android:id="@+id/radiobutton_male"
+            	android:text="男"
+            	android:layout_marginRight="5dp" />
+        	<RadioButton
+            	android:id="@+id/radiobutton_female"
+           		android:text="女" />
+    	</RadioGroup>
+    </LinearLayout>
+	
+    <LinearLayout style="@style/Register_Input" >
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="白细胞计数\nWBC:"
+            android:textSize="16sp"
+            android:textColor="@color/base_color_text_black" />
+        
+        <EditText
+            android:id="@+id/et_wbc"
+        	style="@style/Register_Edit"
+        	android:hint="" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="10^9/L"
+            android:textSize="18sp" />
+    </LinearLayout>
+    
+    <LinearLayout style="@style/Register_Input" >
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="红细胞计数\nRBC:"
+            android:textSize="16sp"
+            android:textColor="@color/base_color_text_black" />
+        
+        <EditText
+            android:id="@+id/et_rbc"
+        	style="@style/Register_Edit"
+        	android:hint="" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="10^12/L"
+            android:textSize="18sp" />
+    </LinearLayout>
+    
+    <LinearLayout style="@style/Register_Input" >
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="血小板计数\nPLT:"
+            android:textSize="16sp"
+            android:textColor="@color/base_color_text_black" />
+        
+        <EditText
+            android:id="@+id/et_plt"
+        	style="@style/Register_Edit"
+        	android:hint="" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="10^9/L"
+            android:textSize="18sp" />
+    </LinearLayout>
+    
+    <LinearLayout style="@style/Register_Input" >
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="淋巴细胞LY\nWBC:"
+            android:textSize="16sp"
+            android:textColor="@color/base_color_text_black" />
+        
+        <EditText
+            android:id="@+id/et_ly"
+        	style="@style/Register_Edit"
+        	android:hint="" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="    %    "
+            android:textSize="18sp" />
+    </LinearLayout>
+    
+    <Button
+        android:id="@+id/button_save"
+        android:layout_marginTop="40dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="解读化验单"
+        android:textColor="#FFFFFF"
+        android:background="@color/green" />
+    
+</LinearLayout>

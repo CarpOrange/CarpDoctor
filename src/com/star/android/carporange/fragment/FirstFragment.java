@@ -24,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 
@@ -111,7 +112,6 @@ public class FirstFragment extends Fragment {
 	}
 
 	private void buildView() {
-		
 		mListView = (ListViewForScrollView) mContentView.findViewById(R.id.listView);
 		
 		mScrollView = (ScrollView) mContentView.findViewById(R.id.scrollView);
@@ -187,106 +187,121 @@ public class FirstFragment extends Fragment {
 	class MyHandler extends Handler {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-			
+
 			case SCROLL_WHAT:
-				
+
 				scrollOnce();
 				break;
-				
+
 			case UPDATE_UI:
-				for(int i = 0; i < 3; i ++) {
+				for (int i = 0; i < 3; i++) {
 					final HealthInfo h = mHealthInfo.get(i);
-					View view = mLayoutInflater.inflate(R.layout.item_viewpager_fragment_first, null);
-					ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
-					TextView textView = (TextView) view.findViewById(R.id.textView);
+					View view = mLayoutInflater.inflate(
+							R.layout.item_viewpager_fragment_first, null);
+					ImageView imageView = (ImageView) view
+							.findViewById(R.id.imageView);
+					TextView textView = (TextView) view
+							.findViewById(R.id.textView);
 					h.getImage().loadImage(mActivity, imageView);
 					textView.setText(h.getMainTitle());
 					view.setOnClickListener(new OnClickListener() {
-						
+
 						@Override
 						public void onClick(View arg0) {
-							Intent i = new Intent(mActivity, HealthInfoActivity.class);
+							Intent i = new Intent(mActivity,
+									HealthInfoActivity.class);
 							i.putExtra("mainTitle", h.getMainTitle());
 							i.putExtra("content", h.getContent());
 							startActivity(i);
 						}
 					});
-					mList.add(view); 
+					mList.add(view);
 				}
 				mViewPager.setAdapter(new PagerAdapter() {
-					
+
 					@Override
 					public boolean isViewFromObject(View arg0, Object arg1) {
 						return arg0 == arg1;
 					}
-					
+
 					@Override
 					public int getCount() {
 						return Integer.MAX_VALUE;
 					}
-					
+
 					@Override
 					public Object instantiateItem(ViewGroup container,
 							int position) {
 						try {
-							((ChildViewPager) container).addView(mList.get(position % 3 ));
+							((ChildViewPager) container).addView(mList
+									.get(position % 3));
 						} catch (Exception e) {
 						}
-			            return mList.get(position % 3);  
+						return mList.get(position % 3);
 					}
-					
+
 					@Override
 					public void destroyItem(ViewGroup container, int position,
 							Object object) {
-//						  ((ChildViewPager) container).removeView(mList.get(position%mList.size()));
+						// ((ChildViewPager)
+						// container).removeView(mList.get(position%mList.size()));
 					}
 				});
 				mViewPager.setCurrentItem(300);
-				
-				mHandler.sendEmptyMessageDelayed(SCROLL_WHAT, 1000*4);
-				for(int i = 3; i < 7; i++) {
+
+				mHandler.sendEmptyMessageDelayed(SCROLL_WHAT, 1000 * 4);
+				for (int i = 3; i < 7; i++) {
 					final HealthInfo h = mHealthInfo.get(i);
-					h.getImage().loadImage(mActivity, mTodayNewsImageViews[i-3],300 ,300 );
-					mTodayNewsTextViews[i-3].setText(h.getMainTitle());
-					mTodayNewsImageViews[i-3].setOnClickListener(new OnClickListener() {
-						
-						@Override
-						public void onClick(View arg0) {
-							Intent i = new Intent(mActivity, HealthInfoActivity.class);
-							i.putExtra("mainTitle", h.getMainTitle());
-							i.putExtra("content", h.getContent());
-							startActivity(i);
-						}
-					});
+					h.getImage().loadImage(mActivity,
+							mTodayNewsImageViews[i - 3], 300, 300);
+					mTodayNewsTextViews[i - 3].setText(h.getMainTitle());
+					mTodayNewsImageViews[i - 3]
+							.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View arg0) {
+									Intent i = new Intent(mActivity,
+											HealthInfoActivity.class);
+									i.putExtra("mainTitle", h.getMainTitle());
+									i.putExtra("content", h.getContent());
+									startActivity(i);
+								}
+							});
 				}
-				MyListViewApdater listViewAdapter = new MyListViewApdater(mActivity, R.layout.item_list_fragment_first, mHealthInfo);
+				MyListViewApdater listViewAdapter = new MyListViewApdater(
+						mActivity, R.layout.item_list_fragment_first,
+						mHealthInfo);
 				mListView.setAdapter(listViewAdapter);
 				mListView.setOnItemClickListener(new OnItemClickListener() {
 
 					@Override
 					public void onItemClick(AdapterView<?> parent, View view,
 							int position, long id) {
-						Intent i = new Intent(mActivity, HealthInfoActivity.class);
-						i.putExtra("mainTitle", mHealthInfo.get(position + 7).getMainTitle());
-						i.putExtra("content", mHealthInfo.get(position + 7).getContent());
+						Intent i = new Intent(mActivity,
+								HealthInfoActivity.class);
+						i.putExtra("mainTitle", mHealthInfo.get(position + 7)
+								.getMainTitle());
+						i.putExtra("content", mHealthInfo.get(position + 7)
+								.getContent());
 						startActivity(i);
 					}
-					
+
 				});
 				break;
 			}
 		}
 
 	}
+
 	private void sendScrollMessage() {
 		mHandler.removeMessages(SCROLL_WHAT);
-		mHandler.sendEmptyMessageDelayed(SCROLL_WHAT, 1000*4);
+		mHandler.sendEmptyMessageDelayed(SCROLL_WHAT, 1000 * 4);
 	}
 
 	private void scrollOnce() {
 		mViewPager.setCurrentItem(mCurrentIndex + 1);
 	}
-	
+
 	class MyThread extends Thread {
 		@Override
 		public void run() {
@@ -296,7 +311,7 @@ public class FirstFragment extends Fragment {
 			query.addWhereLessThan("num", 18);
 			query.order("num");
 			query.findObjects(mActivity, new FindListener<HealthInfo>() {
-				
+
 				@Override
 				public void onSuccess(List<HealthInfo> healthInfo) {
 					mHealthInfo = healthInfo;
@@ -304,39 +319,41 @@ public class FirstFragment extends Fragment {
 					message.what = UPDATE_UI;
 					mHandler.sendMessage(message);
 				}
-				
+
 				@Override
 				public void onError(int arg0, String arg1) {
 				}
 			});
 		}
 	}
-	
+
 	class MyListViewApdater extends ArrayAdapter<HealthInfo> {
-		
+
 		private int resourceId;
-		
+
 		public MyListViewApdater(Context context, int resourceId,
 				List<HealthInfo> objects) {
 			super(context, resourceId, objects);
 			this.resourceId = resourceId;
 		}
-		
+
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			HealthInfo h = getItem(position + 7);
-			View view = LayoutInflater.from(mActivity).inflate(resourceId, null);
+			View view = LayoutInflater.from(mActivity)
+					.inflate(resourceId, null);
 			ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
 			TextView textView = (TextView) view.findViewById(R.id.tv_mainTitle);
 			textView.setText(h.getMainTitle());
 			h.getImage().loadImage(mActivity, imageView, 200, 150);
 			return view;
 		}
+
 		@Override
 		public int getCount() {
 			return 10;
 		}
-		
+
 	}
 	
 	@Override

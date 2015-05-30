@@ -1,10 +1,12 @@
 package com.star.android.carporange;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -29,7 +31,9 @@ import com.baidu.mapapi.search.poi.PoiNearbySearchOption;
 import com.baidu.mapapi.search.poi.PoiResult;
 import com.baidu.mapapi.search.poi.PoiSearch;
 
-public class AmbitusActivity extends Activity {
+@SuppressLint("HandlerLeak") public class AmbitusActivity extends Activity {
+	
+	private final int MAKE_TOAST = 1;
 	
 	private MapView mMapView;
 	private BaiduMap mBaiduMap;
@@ -43,7 +47,9 @@ public class AmbitusActivity extends Activity {
 	
 	private PoiSearch mPoiSearch;
 	private BitmapDescriptor mCurrentMarker;
-	private LocationMode mCurrentMode = LocationMode.NORMAL;;
+	private LocationMode mCurrentMode = LocationMode.NORMAL;
+	
+	private Handler mHandler;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +59,17 @@ public class AmbitusActivity extends Activity {
 	}
 
 	private void buildView() {
+		
+		mHandler = new Handler() {
+			public void handleMessage(android.os.Message msg) {
+				switch (msg.what) {
+				case MAKE_TOAST :
+					Toast.makeText(AmbitusActivity.this, msg.obj.toString(), Toast.LENGTH_LONG).show();
+					break;
+				}
+			};
+		};
+		
 		mMapView = (MapView) findViewById(R.id.mapView);
 		mBaiduMap = mMapView.getMap();
 		mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
@@ -119,14 +136,15 @@ public class AmbitusActivity extends Activity {
 				
 				@Override
 				public void onGetPoiDetailResult(PoiDetailResult result) {
-					
+					Log.i("bb", "xx");
+					Message m = new Message();
+					m.what = MAKE_TOAST;
 					if (result.error != SearchResult.ERRORNO.NO_ERROR) {
-						Toast.makeText(AmbitusActivity.this, "抱歉，未找到结果", Toast.LENGTH_SHORT)
-								.show();
+						m.obj = "抱歉，未找到结果";
 					} else {
-						Toast.makeText(AmbitusActivity.this, result.getName() + ": " + result.getAddress(), Toast.LENGTH_SHORT)
-						.show();
+						m.obj = result.getName() + ": " + result.getAddress();
 					}
+					mHandler.sendMessage(m);
 				}
 			};
 			mPoiSearch.setOnGetPoiSearchResultListener(poiListener);

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <RelativeLayout style="@style/Register_Input"
+        android:layout_height="60dp" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="10dp"
+            android:gravity="center"
+            android:text="隐血"
+            android:textSize="16sp"
+            android:textColor="@color/base_color_text_black" />
+        
+        <TextView
+            android:id="@+id/tv_blo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="阴性"
+            android:textSize="20sp" />
+        
+        <com.star.android.carporange.widget.SwitchButton
+            android:id="@+id/switchbutton_blo"
+            style="@style/SwitchButtonStyle" />
+        
+    </RelativeLayout>
+	
+    <RelativeLayout style="@style/Register_Input"
+        android:layout_height="60dp" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="10dp"
+            android:gravity="center"
+            android:text="白细胞"
+            android:textSize="16sp"
+            android:textColor="@color/base_color_text_black" />
+        
+        <TextView
+            android:id="@+id/tv_wbc"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="阴性"
+            android:textSize="20sp" />
+        
+        <com.star.android.carporange.widget.SwitchButton
+            android:id="@+id/switchbutton_wbc"
+            style="@style/SwitchButtonStyle" />
+        
+    </RelativeLayout>
+    
+    <RelativeLayout style="@style/Register_Input"
+        android:layout_height="60dp" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="10dp"
+            android:gravity="center"
+            android:text="尿蛋白"
+            android:textSize="16sp"
+            android:textColor="@color/base_color_text_black" />
+        
+        <TextView
+            android:id="@+id/tv_pro"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="阴性"
+            android:textSize="20sp" />
+        
+        <com.star.android.carporange.widget.SwitchButton
+            android:id="@+id/switchbutton_pro"
+            style="@style/SwitchButtonStyle" />
+        
+    </RelativeLayout>
+    
+    <RelativeLayout style="@style/Register_Input"
+        android:layout_height="60dp" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="10dp"
+            android:gravity="center"
+            android:text="尿糖"
+            android:textSize="16sp"
+            android:textColor="@color/base_color_text_black" />
+        
+        <TextView
+            android:id="@+id/tv_glu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="阴性"
+            android:textSize="20sp" />
+        
+        <com.star.android.carporange.widget.SwitchButton
+            android:id="@+id/switchbutton_glu"
+            style="@style/SwitchButtonStyle" />
+        
+    </RelativeLayout>
+    
+    <RelativeLayout style="@style/Register_Input"
+        android:layout_height="60dp" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="10dp"
+            android:gravity="center"
+            android:text="胆红素"
+            android:textSize="16sp"
+            android:textColor="@color/base_color_text_black" />
+        
+        <TextView
+            android:id="@+id/tv_bil"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="阴性"
+            android:textSize="20sp" />
+        
+        <com.star.android.carporange.widget.SwitchButton
+            android:id="@+id/switchbutton_bil"
+            style="@style/SwitchButtonStyle" />
+        
+    </RelativeLayout>
+    
+    <Button
+        android:id="@+id/button_save"
+        android:layout_marginTop="40dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="解读化验单"
+        android:textColor="#FFFFFF"
+        android:background="@color/green" />
+    
+</LinearLayout>

@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 
 import com.star.android.carporange.AmbitusActivity;
 import com.star.android.carporange.IllnessActivity;
+import com.star.android.carporange.LaboratoryActivity;
 import com.star.android.carporange.MainActivity;
 import com.star.android.carporange.MedicineActivity;
 import com.star.android.carporange.R;
@@ -20,7 +21,7 @@ public class SecondFragment extends Fragment implements OnClickListener {
 	private MainActivity mActivity;
 	private View mContentView;
 	
-	private RelativeLayout mSymptomRlyt;
+	private RelativeLayout mLaboratoryRlyt;
 	private RelativeLayout mIllnessRlyt;
 	private RelativeLayout mMedicineRlyt;
 	private RelativeLayout mAmbitusRlyt;
@@ -43,7 +44,7 @@ public class SecondFragment extends Fragment implements OnClickListener {
 
 	private void buildView() {
 		
-		mSymptomRlyt = (RelativeLayout) mContentView.findViewById(R.id.rlyt_symptom);
+		mLaboratoryRlyt = (RelativeLayout) mContentView.findViewById(R.id.rlyt_laboratory);
 		mIllnessRlyt = (RelativeLayout) mContentView.findViewById(R.id.rlyt_illness);
 		mMedicineRlyt = (RelativeLayout) mContentView.findViewById(R.id.rlyt_medicine);
 		mAmbitusRlyt = (RelativeLayout) mContentView.findViewById(R.id.rlyt_ambitus);
@@ -53,6 +54,7 @@ public class SecondFragment extends Fragment implements OnClickListener {
 	
 	private void initEvents() {
 		
+		mLaboratoryRlyt.setOnClickListener(this);
 		mIllnessRlyt.setOnClickListener(this);
 		mMedicineRlyt.setOnClickListener(this);
 		mAmbitusRlyt.setOnClickListener(this);
@@ -64,8 +66,12 @@ public class SecondFragment extends Fragment implements OnClickListener {
 		
 		switch (view.getId()) {
 		
+		case R.id.rlyt_laboratory:
+			Intent i = new Intent(mActivity, LaboratoryActivity.class);
+			startActivity(i);
+			break;
 		case R.id.rlyt_illness: 
-			Intent i = new Intent(mActivity, IllnessActivity.class);
+			i = new Intent(mActivity, IllnessActivity.class);
 			startActivity(i);
 			break;
 		case R.id.rlyt_medicine:

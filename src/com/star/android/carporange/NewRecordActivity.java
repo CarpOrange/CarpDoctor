@@ -152,24 +152,27 @@ public class NewRecordActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View view) {
-		
+
 		switch (view.getId()) {
 		case R.id.button_datePicker:
-			new DatePickerDialog(NewRecordActivity.this, mMyDateSetListener, mYear, mMonth, mDay).show();
+			new DatePickerDialog(NewRecordActivity.this, mMyDateSetListener,
+					mYear, mMonth, mDay).show();
 			break;
-			
+
 		case R.id.button_camera:
-			String dir = Environment.getExternalStorageDirectory().getPath()+"/CarpOrange";
+			String dir = Environment.getExternalStorageDirectory().getPath()
+					+ "/CarpOrange";
 			File fileDir = new File(dir);
-			if(!fileDir.exists()) {
+			if (!fileDir.exists()) {
 				fileDir.mkdir();
 			}
 			Time time = new Time();
 			time.setToNow();
-			String imageName = time.year+time.month+time.monthDay+time.hour+time.minute+time.second+"";
-			mImagePath = dir+"/"+imageName+".jpg";
+			String imageName = time.year + time.month + time.monthDay
+					+ time.hour + time.minute + time.second + "";
+			mImagePath = dir + "/" + imageName + ".jpg";
 			File outputImage = new File(mImagePath);
-			if(outputImage.exists()) {
+			if (outputImage.exists()) {
 				outputImage.delete();
 			}
 			try {
@@ -178,7 +181,8 @@ public class NewRecordActivity extends Activity implements OnClickListener {
 				e.printStackTrace();
 			}
 			mImageUri = Uri.fromFile(outputImage);
-			Intent i = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+			Intent i = new Intent(
+					android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 			i.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri);
 			startActivityForResult(i, CAMERA);
 			break;
@@ -188,16 +192,19 @@ public class NewRecordActivity extends Activity implements OnClickListener {
 			String illness = mEtIllness.getText().toString();
 			String cureTime = mEtCureTime.getText().toString();
 			String imagePath = mImagePath;
-			if(TextUtils.isEmpty(hospital) || TextUtils.isEmpty(department) 
-					|| TextUtils.isEmpty(illness) || TextUtils.isEmpty(cureTime)
+			if (TextUtils.isEmpty(hospital) || TextUtils.isEmpty(department)
+					|| TextUtils.isEmpty(illness)
+					|| TextUtils.isEmpty(cureTime)
 					|| TextUtils.isEmpty(imagePath)) {
-				Toast.makeText(NewRecordActivity.this, "资料未完成", Toast.LENGTH_SHORT).show();
+				Toast.makeText(NewRecordActivity.this, "资料未完成",
+						Toast.LENGTH_SHORT).show();
 				return;
 			}
-			
-			MyDatabaseHelper dbHelper = new MyDatabaseHelper(this, "CarpOrange", null, 1);
+
+			MyDatabaseHelper dbHelper = new MyDatabaseHelper(this,
+					"CarpOrange", null, 1);
 			SQLiteDatabase db = dbHelper.getWritableDatabase();
-			if(!dbHelper.tableIsExist("Medical_Record", db)) {
+			if (!dbHelper.tableIsExist("Medical_Record", db)) {
 				db.execSQL(CREATE_MEDICAL_RECORD);
 			}
 			ContentValues values = new ContentValues();
@@ -207,18 +214,21 @@ public class NewRecordActivity extends Activity implements OnClickListener {
 			values.put("illness", illness);
 			values.put("curetime", cureTime);
 			values.put("imagepath", imagePath);
-			if(mId != null) {
-				int y = db.update("Medical_Record", values, "_id=?", new String[]{mId});
-				Toast.makeText(this, "更新成功"+y+"条数据", Toast.LENGTH_SHORT).show();
+			if (mId != null) {
+				int y = db.update("Medical_Record", values, "_id=?",
+						new String[] { mId });
+				Toast.makeText(this, "更新成功" + y + "条数据", Toast.LENGTH_SHORT)
+						.show();
 			} else {
-				Long x =db.insert("Medical_Record", null, values);
-				Toast.makeText(this, "保存成功"+x+"条数据", Toast.LENGTH_SHORT).show();
+				Long x = db.insert("Medical_Record", null, values);
+				Toast.makeText(this, "保存成功" + x + "条数据", Toast.LENGTH_SHORT)
+						.show();
 			}
-			
+
 			setResult(RESULT_OK);
 			finish();
 			break;
-		default: 
+		default:
 			break;
 		}
 	}

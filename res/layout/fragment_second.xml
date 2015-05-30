@@ -21,7 +21,7 @@
         android:orientation="vertical" >
         
         <RelativeLayout
-            android:id="@+id/rlyt_symptom"
+            android:id="@+id/rlyt_laboratory"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" >
@@ -55,13 +55,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="症状图解"
+                    android:text="化验单解读"
                     android:textSize="20sp" />
                 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="根据身体的症状判断疾病"
+                    android:text="解读化验单的异常指标"
                     android:textColor="#929699" />
                 
             </LinearLayout>

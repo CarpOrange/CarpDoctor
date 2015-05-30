@@ -85,6 +85,27 @@
         <activity
             android:name="com.star.android.carporange.NewRemindActivity" >
         </activity>
+        <activity
+            android:name="com.star.android.carporange.LaboratoryActivity" >
+        </activity>
+        <activity
+            android:name="com.star.android.carporange.BloodRoutineActivity" >
+        </activity>
+        <activity
+            android:name="com.star.android.carporange.ReadingLaboratoryActivity" >
+        </activity>
+        <activity
+            android:name="com.star.android.carporange.PissRoutineActivity" >
+        </activity>
+        <activity
+            android:name="com.star.android.carporange.ShitRoutineActivity" >
+        </activity>
+        <activity
+            android:name="com.star.android.carporange.HbvActivity" >
+        </activity>
+        <activity
+            android:name="com.star.android.carporange.KidneyActivity" >
+        </activity>
         
         <service
             android:name="com.star.android.carporange.service.CoreService" >
@@ -96,8 +117,7 @@
         </service>
         
         <receiver
-            android:name="com.star.android.carporange.service.MyTimeReceiver"
-            android:process=":remote" >
+            android:name="com.star.android.carporange.service.MyTimeReceiver" >
         </receiver>
         
     </application>

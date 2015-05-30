@@ -34,11 +34,11 @@ public class MedicineActivity extends Activity {
 	}
 
 	private void buildView() {
-		
+
 		mListView = (ListView) findViewById(R.id.listView);
 		myDbHelper = new MyDatabaseHelper(this, "CarpOrange", null, 1);
 		SQLiteDatabase db = myDbHelper.getWritableDatabase();
-		if(myDbHelper.tableIsExist("Medicine", db)) {
+		if (myDbHelper.tableIsExist("Medicine", db)) {
 			getFromSqlite(db);
 		} else {
 			initSqlite(db);
@@ -50,8 +50,10 @@ public class MedicineActivity extends Activity {
 		final SQLiteDatabase mDb = db;
 		String sql = "select _id, medicine_name from medicine order by medicine_name;";
 		final Cursor cursor = db.rawQuery(sql, null);
-		SimpleCursorAdapter mCursorAdapter = new SimpleCursorAdapter(MedicineActivity.this,
-				R.layout.item_list_activity_medicine, cursor, new String[]{"medicine_name"}, new int[]{R.id.textView});
+		SimpleCursorAdapter mCursorAdapter = new SimpleCursorAdapter(
+				MedicineActivity.this, R.layout.item_list_activity_medicine,
+				cursor, new String[] { "medicine_name" },
+				new int[] { R.id.textView });
 		mListView.setAdapter(mCursorAdapter);
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -60,11 +62,13 @@ public class MedicineActivity extends Activity {
 					long arg3) {
 				cursor.moveToPosition(index);
 				int id = cursor.getInt(0);
-				String sql = "select medicine_info from medicine where _id="+id;
+				String sql = "select medicine_info from medicine where _id="
+						+ id;
 				Cursor c = mDb.rawQuery(sql, null);
 				c.moveToFirst();
 				String info = c.getString(0);
-				Intent i = new Intent(MedicineActivity.this, HealthInfoActivity.class);
+				Intent i = new Intent(MedicineActivity.this,
+						HealthInfoActivity.class);
 				i.putExtra("mainTitle", cursor.getString(1));
 				i.putExtra("content", info);
 				startActivity(i);
@@ -76,21 +80,22 @@ public class MedicineActivity extends Activity {
 		final SQLiteDatabase mDb = db;
 		String sql = "create table Medicine ("
 				+ "_id integer primary key autoincrement ,"
-				+ "medicine_name text ,"
-				+ "medicine_info text) ;";
+				+ "medicine_name text ," + "medicine_info text) ;";
 		mDb.execSQL(sql);
 		BmobQuery<Medicine> query = new BmobQuery<Medicine>("Medicine");
 		query.findObjects(MedicineActivity.this, new FindListener<Medicine>() {
 
 			@Override
 			public void onError(int arg0, String arg1) {
-				Toast.makeText(MedicineActivity.this, "无法连接到服务器", Toast.LENGTH_SHORT).show();
+				Toast.makeText(MedicineActivity.this, "无法连接到服务器",
+						Toast.LENGTH_SHORT).show();
 			}
 
 			@Override
 			public void onSuccess(List<Medicine> list) {
-				Toast.makeText(MedicineActivity.this, "初始化成功", Toast.LENGTH_SHORT).show();
-				for(Medicine medicine : list) {
+				Toast.makeText(MedicineActivity.this, "初始化成功",
+						Toast.LENGTH_SHORT).show();
+				for (Medicine medicine : list) {
 					String medicine_name = medicine.getMedicine_name();
 					String medicine_info = medicine.getMedicine_info();
 					ContentValues values = new ContentValues();

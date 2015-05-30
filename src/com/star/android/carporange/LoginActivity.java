@@ -57,7 +57,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		case R.id.login_button:
 			final String name = mNameText.getText().toString();
 			final String password = mPasswordText.getText().toString();
-			Log.i("bb", name+"--"+password);
+			Log.i("bb", name + "--" + password);
 			BmobQuery<User> query = new BmobQuery<User>();
 			query.addWhereEqualTo("username", name);
 			query.addWhereEqualTo("password", password);
@@ -65,24 +65,28 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 				@Override
 				public void onError(int arg0, String arg1) {
-					Toast.makeText(LoginActivity.this, "登录失败，您可以待会再试", Toast.LENGTH_LONG).show();
+					Toast.makeText(LoginActivity.this, "登录失败，您可以待会再试",
+							Toast.LENGTH_LONG).show();
 				}
 
 				@Override
 				public void onSuccess(List<User> list) {
-					if(list.size() > 0) {
-						SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+					if (list.size() > 0) {
+						SharedPreferences sp = PreferenceManager
+								.getDefaultSharedPreferences(LoginActivity.this);
 						Editor editor = sp.edit();
 						editor.putString("username", name);
 						editor.putString("password", password);
 						editor.commit();
 						finish();
 					} else {
-						Toast.makeText(LoginActivity.this, "您的用户名或密码有误", Toast.LENGTH_LONG).show();
+						Toast.makeText(LoginActivity.this, "您的用户名或密码有误",
+								Toast.LENGTH_LONG).show();
 					}
-				}});
+				}
+			});
 			break;
-		
+
 		default:
 			break;
 		}

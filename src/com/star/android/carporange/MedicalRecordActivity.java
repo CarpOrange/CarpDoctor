@@ -42,18 +42,23 @@ public class MedicalRecordActivity extends Activity implements OnClickListener {
 
 	@SuppressWarnings("deprecation")
 	private void updateListView() {
-		MyDatabaseHelper dbHelper = new MyDatabaseHelper(this, "CarpOrange", null, 1);
+		MyDatabaseHelper dbHelper = new MyDatabaseHelper(this, "CarpOrange",
+				null, 1);
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		
-		if(!dbHelper.tableIsExist("Medical_Record", db)) {
+
+		if (!dbHelper.tableIsExist("Medical_Record", db)) {
 			return;
 		}
-		
-		mCursor = db.rawQuery("select * from Medical_Record where username=?", new String[]{mUsername});
-		if(mCursor.moveToFirst()) {
-			mListView.setAdapter(new SimpleCursorAdapter
-					(this, R.layout.item_list_activity_record_medical, mCursor,new String[]{"illness", "curetime", "department", "hospital"}
-					, new int[]{R.id.tv_illness, R.id.tv_time_cure, R.id.tv_department, R.id.tv_hospital}));
+
+		mCursor = db.rawQuery("select * from Medical_Record where username=?",
+				new String[] { mUsername });
+		if (mCursor.moveToFirst()) {
+			mListView.setAdapter(new SimpleCursorAdapter(this,
+					R.layout.item_list_activity_record_medical, mCursor,
+					new String[] { "illness", "curetime", "department",
+							"hospital" }, new int[] { R.id.tv_illness,
+							R.id.tv_time_cure, R.id.tv_department,
+							R.id.tv_hospital }));
 		}
 	}
 

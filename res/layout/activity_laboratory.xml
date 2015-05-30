@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+   	<RelativeLayout
+   	    android:id="@+id/rlyt_first"
+   	    android:layout_width="match_parent"
+   	    android:layout_height="48dp"
+   	    android:layout_marginTop="20dp"
+   	    android:background="#FFFFFF" >
+   	    <View
+   	        android:layout_width="match_parent"
+   	        android:layout_height="0.5dp"
+   	        android:background="@color/divider_color"
+   	        android:layout_alignParentTop="true" />
+   	    <TextView
+			android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_marginLeft="20dp"
+        	android:layout_centerVertical="true"
+        	android:text="三大常规"
+        	android:textSize="18sp"
+        	android:gravity="center_vertical"
+        	android:drawableRight="@drawable/icon_down" />
+   	    <View
+   	        android:layout_width="match_parent"
+   	        android:layout_height="0.5dp"
+   	        android:background="@color/divider_color"
+   	        android:layout_alignParentBottom="true" />
+   	</RelativeLayout>
+	
+   	<RelativeLayout
+   	    android:id="@+id/rlyt_blood"
+   	    android:layout_width="match_parent"
+   	    android:layout_height="48dp"
+   	    android:background="#FFFFFF"
+   	    android:visibility="gone" >
+   	    <TextView
+			android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_marginLeft="20dp"
+        	android:layout_centerVertical="true"
+        	android:text="血常规"
+        	android:textSize="18sp"
+        	android:textColor="#929699"
+        	android:gravity="center_vertical" />
+   	    <View
+   	        android:layout_width="match_parent"
+   	        android:layout_height="0.5dp"
+   	        android:layout_marginLeft="20dp"
+   	        android:background="@color/divider_color"
+   	        android:layout_alignParentBottom="true" />
+   	</RelativeLayout>
+   	
+   	<RelativeLayout
+   	    android:id="@+id/rlyt_piss"
+   	    android:layout_width="match_parent"
+   	    android:layout_height="48dp"
+   	    android:background="#FFFFFF"
+   	    android:visibility="gone" >
+   	    <TextView
+			android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_marginLeft="20dp"
+        	android:layout_centerVertical="true"
+        	android:text="尿常规"
+        	android:textSize="18sp"
+        	android:textColor="#929699"
+        	android:gravity="center_vertical" />
+   	    <View
+   	        android:layout_width="match_parent"
+   	        android:layout_height="0.5dp"
+   	        android:layout_marginLeft="20dp"
+   	        android:background="@color/divider_color"
+   	        android:layout_alignParentBottom="true" />
+   	</RelativeLayout>
+   	
+   	<RelativeLayout
+		android:id="@+id/rlyt_shit"   	    
+   	    android:layout_width="match_parent"
+   	    android:layout_height="48dp"
+   	    android:background="#FFFFFF"
+   	    android:visibility="gone" >
+   	    <TextView
+			android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_marginLeft="20dp"
+        	android:layout_centerVertical="true"
+        	android:text="便常规"
+        	android:textSize="18sp"
+        	android:textColor="#929699"
+        	android:gravity="center_vertical" />
+   	    <View
+   	        android:layout_width="match_parent"
+   	        android:layout_height="0.5dp"
+   	        android:background="@color/divider_color"
+   	        android:layout_alignParentBottom="true" />
+   	</RelativeLayout>
+   	
+   	<RelativeLayout
+   	    android:id="@+id/rlyt_second"
+   	    android:layout_width="match_parent"
+   	    android:layout_height="48dp"
+   	    android:layout_marginTop="20dp"
+   	    android:background="#FFFFFF" >
+   	    <View
+   	        android:layout_width="match_parent"
+   	        android:layout_height="0.5dp"
+   	        android:background="@color/divider_color"
+   	        android:layout_alignParentTop="true" />
+   	    <TextView
+			android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_marginLeft="20dp"
+        	android:layout_centerVertical="true"
+        	android:text="肝脏类"
+        	android:textSize="18sp"
+        	android:gravity="center_vertical"
+        	android:drawableRight="@drawable/icon_down" />
+   	    <View
+   	        android:layout_width="match_parent"
+   	        android:layout_height="0.5dp"
+   	        android:background="@color/divider_color"
+   	        android:layout_alignParentBottom="true" />
+   	</RelativeLayout>
+   	
+   	<RelativeLayout
+   	    android:id="@+id/rlyt_hepatitis"
+   	    android:layout_width="match_parent"
+   	    android:layout_height="48dp"
+   	    android:background="#FFFFFF"
+   	    android:visibility="gone" >
+   	    <TextView
+			android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_marginLeft="20dp"
+        	android:layout_centerVertical="true"
+        	android:text="乙肝五项"
+        	android:textSize="18sp"
+        	android:textColor="#929699"
+        	android:gravity="center_vertical" />
+   	    <View
+   	        android:layout_width="match_parent"
+   	        android:layout_height="0.5dp"
+   	        android:background="@color/divider_color"
+   	        android:layout_alignParentBottom="true" />
+   	</RelativeLayout>
+   	
+   	<RelativeLayout
+   	    android:id="@+id/rlyt_third"
+   	    android:layout_width="match_parent"
+   	    android:layout_height="48dp"
+   	    android:layout_marginTop="20dp"
+   	    android:background="#FFFFFF" >
+   	    <View
+   	        android:layout_width="match_parent"
+   	        android:layout_height="0.5dp"
+   	        android:background="@color/divider_color"
+   	        android:layout_alignParentTop="true" />
+   	    <TextView
+			android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_marginLeft="20dp"
+        	android:layout_centerVertical="true"
+        	android:text="肾脏类"
+        	android:textSize="18sp"
+        	android:gravity="center_vertical"
+        	android:drawableRight="@drawable/icon_down" />
+   	    <View
+   	        android:layout_width="match_parent"
+   	        android:layout_height="0.5dp"
+   	        android:background="@color/divider_color"
+   	        android:layout_alignParentBottom="true" />
+   	</RelativeLayout>
+   	
+   	<RelativeLayout
+   	    android:id="@+id/rlyt_kidney"
+   	    android:layout_width="match_parent"
+   	    android:layout_height="48dp"
+   	    android:background="#FFFFFF"
+   	    android:visibility="gone" >
+   	    <TextView
+			android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_marginLeft="20dp"
+        	android:layout_centerVertical="true"
+        	android:text="肾功能"
+        	android:textSize="18sp"
+        	android:textColor="#929699"
+        	android:gravity="center_vertical" />
+   	    <View
+   	        android:layout_width="match_parent"
+   	        android:layout_height="0.5dp"
+   	        android:background="@color/divider_color"
+   	        android:layout_alignParentBottom="true" />
+   	</RelativeLayout>
+   	
+</LinearLayout>

@@ -56,39 +56,46 @@ public class IllnessActivity extends Activity implements OnClickListener {
 		departmentTextView = (TextView) findViewById(R.id.tv_department);
 		leftListView = (ListView) findViewById(R.id.listView_left);
 		rightListView = (ListView) findViewById(R.id.listView_right);
-		
+
 		dbHelper = new MyDatabaseHelper(this, "CarpOrange", null, 1);
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		
-		if(dbHelper.tableIsExist("Illness", db)) {
+
+		if (dbHelper.tableIsExist("Illness", db)) {
 			getFromSqlite(db);
 		} else {
 			initSqlite(db);
 		}
-		
-		
+
 	}
-	
+
 	private void getFromSqlite(SQLiteDatabase db) {
 		Cursor cursor;
-		cursor = db.rawQuery("select illness_people from illness group by illness_people having illness_people is not null", null);
-		if(cursor.moveToFirst()) {
+		cursor = db
+				.rawQuery(
+						"select illness_people from illness group by illness_people having illness_people is not null",
+						null);
+		if (cursor.moveToFirst()) {
 			do {
 				String people = cursor.getString(0);
 				peopleList.add(people);
-			} while(cursor.moveToNext());
+			} while (cursor.moveToNext());
 		}
-		peopleAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, peopleList);
-		cursor = db.rawQuery("select illness_department from illness group by illness_department", null);
-		if(cursor.moveToFirst()) {
+		peopleAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, peopleList);
+		cursor = db
+				.rawQuery(
+						"select illness_department from illness group by illness_department",
+						null);
+		if (cursor.moveToFirst()) {
 			do {
 				String department = cursor.getString(0);
 				departmentList.add(department);
-			} while(cursor.moveToNext());
+			} while (cursor.moveToNext());
 		}
 		cursor.close();
-		departmentAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, departmentList);
-		
+		departmentAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, departmentList);
+
 		leftListView.setAdapter(peopleAdapter);
 	}
 
@@ -97,17 +104,17 @@ public class IllnessActivity extends Activity implements OnClickListener {
 		final SQLiteDatabase mDb = db;
 		final String CREATE_ILLNESS = "create table Illness ("
 				+ "id integer primary key autoincrement, "
-				+ "illness_name text, "
-				+ "illness_department text, "
-				+ "illness_people text) " ;
+				+ "illness_name text, " + "illness_department text, "
+				+ "illness_people text) ";
 		query.findObjects(this, new FindListener<Illness>() {
-			
+
 			@Override
 			public void onSuccess(List<Illness> list) {
 				mDb.execSQL(CREATE_ILLNESS);
-				Toast.makeText(IllnessActivity.this, "初始化成功", Toast.LENGTH_LONG).show();
+				Toast.makeText(IllnessActivity.this, "初始化成功", Toast.LENGTH_LONG)
+						.show();
 				ContentValues values = new ContentValues();
-				for(Illness illness : list) {
+				for (Illness illness : list) {
 					String name = illness.getIllness_name();
 					String department = illness.getIllness_department();
 					String people = illness.getIllness_people();
@@ -119,10 +126,11 @@ public class IllnessActivity extends Activity implements OnClickListener {
 				}
 				getFromSqlite(mDb);
 			}
-			
+
 			@Override
 			public void onError(int arg0, String arg1) {
-				Toast.makeText(IllnessActivity.this, "无法连接到服务器", Toast.LENGTH_LONG).show();
+				Toast.makeText(IllnessActivity.this, "无法连接到服务器",
+						Toast.LENGTH_LONG).show();
 			}
 		});
 	}
