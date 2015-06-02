@@ -150,9 +150,9 @@ public class MyInfoActivity extends Activity implements OnClickListener {
 			User u = new User();
 			u.setXingming(mEtXingming.getText() != null ? mEtXingming.getText()
 					.toString() : null);
-			u.setWeight(mEtWeight.getText() != null ? Integer
+			u.setWeight(!TextUtils.isEmpty(mEtWeight.getText()) ? Integer
 					.parseInt(mEtWeight.getText().toString()) : null);
-			u.setHeight(mEtHeight.getText() != null ? Integer
+			u.setHeight(!TextUtils.isEmpty(mEtHeight.getText()) ? Integer
 					.parseInt(mEtHeight.getText().toString()) : null);
 			u.setBirthDate(mEtBirthDate.getText() != null ? mEtBirthDate
 					.getText().toString() : null);

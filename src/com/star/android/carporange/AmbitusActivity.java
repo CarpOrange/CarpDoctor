@@ -65,6 +65,7 @@ import com.baidu.mapapi.search.poi.PoiSearch;
 				switch (msg.what) {
 				case MAKE_TOAST :
 					Toast.makeText(AmbitusActivity.this, msg.obj.toString(), Toast.LENGTH_LONG).show();
+					Log.i("bb", "love");
 					break;
 				}
 			};

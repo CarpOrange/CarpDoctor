@@ -1,12 +1,14 @@
 package com.star.android.carporange;
 
 import java.util.List;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
@@ -19,16 +21,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
-
 import com.star.android.carporange.javabean.User;
 
-public class LoginActivity extends Activity implements OnClickListener {
-
+@SuppressLint("HandlerLeak") public class LoginActivity extends Activity implements OnClickListener {
+	
+	private final int MAKE_TOAST = 1;
+	
 	private TextView mNameText;
 	private TextView mPasswordText;
 	private TextView mRegisterText;
 	private Button mLoginButton;
-
+	
+	private Handler mHandler;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,6 +41,16 @@ public class LoginActivity extends Activity implements OnClickListener {
 	}
 
 	private void buildView() {
+		
+		mHandler = new Handler() {
+			public void handleMessage(android.os.Message msg) {
+				switch (msg.what) {
+				case MAKE_TOAST :
+					Toast.makeText(LoginActivity.this, msg.obj.toString(), Toast.LENGTH_LONG).show();
+					break;
+				}
+			};
+		};
 		mNameText = (TextView) findViewById(R.id.userName);
 		mPasswordText = (TextView) findViewById(R.id.userPassword);
 		mLoginButton = (Button) findViewById(R.id.login_button);
@@ -65,8 +79,10 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 				@Override
 				public void onError(int arg0, String arg1) {
-					Toast.makeText(LoginActivity.this, "登录失败，您可以待会再试",
-							Toast.LENGTH_LONG).show();
+					Message m = new Message();
+					m.what = MAKE_TOAST;
+					m.obj = "登录失败，您可以待会再试";
+					mHandler.sendMessage(m);
 				}
 
 				@Override
@@ -80,8 +96,10 @@ public class LoginActivity extends Activity implements OnClickListener {
 						editor.commit();
 						finish();
 					} else {
-						Toast.makeText(LoginActivity.this, "您的用户名或密码有误",
-								Toast.LENGTH_LONG).show();
+						Message m = new Message();
+						m.what = MAKE_TOAST;
+						m.obj = "您的用户名或者密码有误";
+						mHandler.sendMessage(m);
 					}
 				}
 			});
