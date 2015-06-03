@@ -1,10 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="此功能仍在研发中(づ￣ 3￣)づ" />
-</RelativeLayout>
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+    
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="5"
+        android:orientation="vertical" >
+        
+        <RelativeLayout
+            android:id="@+id/rlyt_bp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+            
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_color"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@null" />
+            
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/second_symptom"
+                android:contentDescription="@null" />
+            
+            <LinearLayout
+                android:layout_toRightOf="@id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="血压"
+                    android:textSize="20sp" />
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="记录您的血压变化情况"
+                    android:textColor="#929699" />
+                
+            </LinearLayout>
+            
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/icon_next"
+                android:contentDescription="@null" />
+            
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_color"
+                android:layout_alignParentBottom="true"
+                android:contentDescription="@null" />
+                
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/rlyt_hr"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+            
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/second_illness"
+                android:contentDescription="@null" />
+            
+            <LinearLayout
+                android:layout_toRightOf="@id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="心率"
+                    android:textSize="20sp" />
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="监测您的心率是否正常"
+                    android:textColor="#929699" />
+                
+            </LinearLayout>
+            
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/icon_next"
+                android:contentDescription="@null" />
+            
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_color"
+                android:layout_alignParentBottom="true"
+                android:contentDescription="@null" />
+            
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/rlyt_glu"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+            
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/second_medicine"
+                android:contentDescription="@null" />
+            
+            <LinearLayout
+                android:layout_toRightOf="@id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="血糖"
+                    android:textSize="20sp" />
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="告诉您血糖的波动"
+                    android:textColor="#929699" />
+                
+            </LinearLayout>
+            
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/icon_next"
+                android:contentDescription="@null" />
+            
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_color"
+                android:layout_alignParentBottom="true"
+                android:contentDescription="@null" />
+            
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/rlyt_weight"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+            
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/second_ambitus"
+                android:contentDescription="@null" />
+            
+            <LinearLayout
+                android:layout_toRightOf="@id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="体重"
+                    android:textSize="20sp" />
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="记录您体重的走势"
+                    android:textColor="#929699" />
+                
+                
+            </LinearLayout>
+            
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/icon_next"
+                android:contentDescription="@null" />
+            
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_color"
+                android:layout_alignParentBottom="true"
+                android:contentDescription="@null" />
+            
+        </RelativeLayout>
+        
+    </LinearLayout>
+    
+</LinearLayout>

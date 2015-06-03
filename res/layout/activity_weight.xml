@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout style="@style/Register_Input" >
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="日期:"
+            android:textSize="16sp"
+            android:textColor="@color/base_color_text_black" />
+        
+        <EditText
+            android:id="@+id/et_date"
+        	style="@style/Register_Edit"
+        	android:hint="" />
+    </LinearLayout>
+	
+    <LinearLayout style="@style/Register_Input" >
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="时间:"
+            android:textSize="16sp"
+            android:textColor="@color/base_color_text_black" />
+        
+        <EditText
+            android:id="@+id/et_time"
+        	style="@style/Register_Edit"
+        	android:hint="" />
+    </LinearLayout>
+    
+    <LinearLayout style="@style/Register_Input" >
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="体重\nkg"
+            android:textSize="16sp"
+            android:textColor="@color/base_color_text_black" />
+        
+        <EditText
+            android:id="@+id/et_weight"
+        	style="@style/Register_Edit"
+        	android:hint="" />
+    </LinearLayout>
+    
+    <Button
+        android:id="@+id/button_save"
+        android:layout_marginTop="40dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="保存"
+        android:textColor="#FFFFFF"
+        android:background="@color/green" />
+
+</LinearLayout>

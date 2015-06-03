@@ -14,7 +14,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:background="@color/green"
-        android:text="上传病历"
+        android:text="新增"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
 	

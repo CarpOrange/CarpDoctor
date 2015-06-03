@@ -106,6 +106,30 @@
         <activity
             android:name="com.star.android.carporange.KidneyActivity" >
         </activity>
+        <activity
+            android:name="org.achartengine.GraphicalActivity" >
+        </activity>
+        <activity
+            android:name="com.star.android.carporange.CharDemoActivity" >
+        </activity>
+        <activity
+            android:name="com.star.android.carporange.BPActivity" >
+        </activity>
+        <activity
+            android:name="com.star.android.carporange.BPListActivity" >
+        </activity>
+        <activity
+            android:name="com.star.android.carporange.GluActivity" >
+        </activity>
+        <activity
+            android:name="com.star.android.carporange.GluListActivity" >
+        </activity>
+        <activity
+            android:name="com.star.android.carporange.WeightActivity" >
+        </activity>
+        <activity
+            android:name="com.star.android.carporange.WeightListActivity" >
+        </activity>
         
         <service
             android:name="com.star.android.carporange.service.CoreService" >

@@ -38,7 +38,7 @@
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/second_symptom"
                 android:contentDescription="@null" />
@@ -94,7 +94,7 @@
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/second_illness"
                 android:contentDescription="@null" />
@@ -150,7 +150,7 @@
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/second_medicine"
                 android:contentDescription="@null" />
@@ -206,7 +206,7 @@
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/second_ambitus"
                 android:contentDescription="@null" />
