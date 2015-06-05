@@ -83,6 +83,7 @@ public class BPListActivity extends Activity {
 				Intent i = new Intent(BPListActivity.this, BPActivity.class);
 				i.putExtra("bundle", bundle);
 				startActivityForResult(i, 1);
+				
 			}
 		});
 
