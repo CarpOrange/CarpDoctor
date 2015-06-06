@@ -337,6 +337,9 @@ public class ThirdFragment extends Fragment implements OnClickListener{
 		YAxis leftAxis = mHRChart.getAxisLeft();
 		leftAxis.setAxisMaxValue(max1+30);
 		 
+		YAxis rightAxis = mHRChart.getAxisRight();
+		rightAxis.setEnabled(false);
+		
         // create a dataset and give it a type
         LineDataSet set1 = new LineDataSet(yVals1, "心率");
         set1.setAxisDependency(AxisDependency.LEFT);
@@ -411,7 +414,10 @@ public class ThirdFragment extends Fragment implements OnClickListener{
 		
 		YAxis leftAxis = mGluChart.getAxisLeft();
 		leftAxis.setAxisMaxValue(max1+30);
-		 
+		
+		YAxis rightAxis = mGluChart.getAxisRight();
+		rightAxis.setEnabled(false);
+		
         // create a dataset and give it a type
         LineDataSet set1 = new LineDataSet(yVals1, "血糖");
         set1.setAxisDependency(AxisDependency.LEFT);
@@ -485,7 +491,10 @@ public class ThirdFragment extends Fragment implements OnClickListener{
 		
 		YAxis leftAxis = mWeightChart.getAxisLeft();
 		leftAxis.setAxisMaxValue(max1+30);
-		 
+		
+		YAxis rightAxis = mWeightChart.getAxisRight();
+		rightAxis.setEnabled(false);
+		
         // create a dataset and give it a type
         LineDataSet set1 = new LineDataSet(yVals1, "体重");
         set1.setAxisDependency(AxisDependency.LEFT);
