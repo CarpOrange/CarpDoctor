@@ -79,77 +79,86 @@ public class ThirdFragment extends Fragment implements OnClickListener{
 		mBPChart = (LineChart) mContentView.findViewById(R.id.chart_bp);
 		mHRChart = (LineChart) mContentView.findViewById(R.id.chart_hr);
 		mGluChart = (LineChart) mContentView.findViewById(R.id.chart_glu);
+		mWeightChart = (LineChart)mContentView.findViewById(R.id.chart_weight);
 		
-		initBPChart();
+		initAllChart();
         
 	}
 
-	private void initBPChart() {
+	private void initAllChart() {
 		
-		mBPChart.setDescription("");
-        mBPChart.setNoDataTextDescription("当月没有数据");
+		
+		LineChart[] charts = new LineChart[] {mBPChart, mHRChart, mGluChart, mWeightChart};
+		for(LineChart mChart: charts) {
+			
+			mChart.setDescription("");
+	        mChart.setNoDataTextDescription("当月没有数据");
 
-        // enable value highlighting
-        mBPChart.setHighlightEnabled(true);
+	        // enable value highlighting
+	        mChart.setHighlightEnabled(true);
 
-        // enable touch gestures
-        mBPChart.setTouchEnabled(false);
-        
-        mBPChart.setDragDecelerationFrictionCoef(0.9f);
+	        // enable touch gestures
+	        mChart.setTouchEnabled(false);
+	        
+	        mChart.setDragDecelerationFrictionCoef(0.9f);
 
-        // enable scaling and dragging
-        mBPChart.setDragEnabled(true);
-        mBPChart.setScaleEnabled(true);
-        mBPChart.setDrawGridBackground(false);
-        mBPChart.setHighlightPerDragEnabled(true);
+	        // enable scaling and dragging
+	        mChart.setDragEnabled(true);
+	        mChart.setScaleEnabled(true);
+	        mChart.setDrawGridBackground(false);
+	        mChart.setHighlightPerDragEnabled(true);
 
-        // if disabled, scaling can be done on x- and y-axis separately
-        mBPChart.setPinchZoom(true);
+	        // if disabled, scaling can be done on x- and y-axis separately
+	        mChart.setPinchZoom(true);
 
-        // set an alternative background color
-        mBPChart.setBackgroundColor(Color.LTGRAY);
+	        // set an alternative background color
+	        mChart.setBackgroundColor(Color.LTGRAY);
 
-        // add data
-        setBPData();
+	        mChart.animateX(2500);
 
-        mBPChart.animateX(2500);
+	        Typeface tf = Typeface.createFromAsset(mActivity.getAssets(), "OpenSans-Regular.ttf");
 
-        Typeface tf = Typeface.createFromAsset(mActivity.getAssets(), "OpenSans-Regular.ttf");
+	        // get the legend (only possible after setting data)
+	        Legend l = mChart.getLegend();
 
-        // get the legend (only possible after setting data)
-        Legend l = mBPChart.getLegend();
+	        // modify the legend ...
+	        // l.setPosition(LegendPosition.LEFT_OF_CHART);
+	        l.setForm(LegendForm.LINE);
+	        l.setTypeface(tf);
+	        l.setTextSize(11f);
+	        l.setTextColor(Color.WHITE);
+	        l.setPosition(LegendPosition.BELOW_CHART_LEFT);
+//	        l.setYOffset(11f);
 
-        // modify the legend ...
-        // l.setPosition(LegendPosition.LEFT_OF_CHART);
-        l.setForm(LegendForm.LINE);
-        l.setTypeface(tf);
-        l.setTextSize(11f);
-        l.setTextColor(Color.WHITE);
-        l.setPosition(LegendPosition.BELOW_CHART_LEFT);
-//        l.setYOffset(11f);
+	        XAxis xAxis = mChart.getXAxis();
+	        xAxis.setTypeface(tf);
+	        xAxis.setTextSize(12f);
+	        xAxis.setTextColor(Color.WHITE);
+	        xAxis.setDrawGridLines(false);
+	        xAxis.setDrawAxisLine(false);
+	        xAxis.setSpaceBetweenLabels(1);
 
-        XAxis xAxis = mBPChart.getXAxis();
-        xAxis.setTypeface(tf);
-        xAxis.setTextSize(12f);
-        xAxis.setTextColor(Color.WHITE);
-        xAxis.setDrawGridLines(false);
-        xAxis.setDrawAxisLine(false);
-        xAxis.setSpaceBetweenLabels(1);
-
-        YAxis leftAxis = mBPChart.getAxisLeft();
-        leftAxis.setTypeface(tf);
-        leftAxis.setTextColor(ColorTemplate.getHoloBlue());
-        leftAxis.setDrawGridLines(true);
-        
-        YAxis rightAxis = mBPChart.getAxisRight();
-        rightAxis.setTypeface(tf);
-        rightAxis.setTextColor(Color.RED);
-        rightAxis.setStartAtZero(false);
-        rightAxis.setAxisMinValue(0);
-        rightAxis.setDrawGridLines(false);
-        
+	        YAxis leftAxis = mChart.getAxisLeft();
+	        leftAxis.setTypeface(tf);
+	        leftAxis.setTextColor(ColorTemplate.getHoloBlue());
+	        leftAxis.setDrawGridLines(true);
+	        
+	        YAxis rightAxis = mChart.getAxisRight();
+	        rightAxis.setTypeface(tf);
+	        rightAxis.setTextColor(Color.RED);
+	        rightAxis.setStartAtZero(false);
+	        rightAxis.setAxisMinValue(0);
+	        rightAxis.setDrawGridLines(false);
+	        
+		}
+		
+		setBPData();
+		setHRData();
+		setGluData();
+		setWeightData();
+		
 	}
-
+	
 	private void initEvents() {
 		
 		mBPRlyt.setOnClickListener(this);
@@ -196,7 +205,6 @@ public class ThirdFragment extends Fragment implements OnClickListener{
 		Calendar c = Calendar.getInstance();
 		StringBuilder sb = new StringBuilder("").append(c.get(Calendar.YEAR)).append("年")
 				.append(c.get(Calendar.MONTH)).append("月%");
-		Log.i("bb", sb.toString());
 		Cursor cursor = db.rawQuery("select sbp,dbp,date from BP where date like '" + sb.toString() + "%'", null);
 		
 		ArrayList<String> xVals = new ArrayList<String>();
@@ -231,7 +239,7 @@ public class ThirdFragment extends Fragment implements OnClickListener{
 				}
 			}
 			
-			if(!TextUtils.isEmpty(sbps[i])) {
+			if(!TextUtils.isEmpty(dbps[i])) {
 				yVals2.add(new Entry(Float.parseFloat(dbps[i]), i));
 				if(Float.parseFloat(dbps[i]) > max2) {
 					max2 = Float.parseFloat(dbps[i]);
@@ -239,10 +247,10 @@ public class ThirdFragment extends Fragment implements OnClickListener{
 			}
 		}
 		
-		 YAxis leftAxis = mBPChart.getAxisLeft();
-		 leftAxis.setAxisMaxValue(max1+30);
-		 YAxis rightAxis = mBPChart.getAxisRight();
-		 rightAxis.setAxisMaxValue(max2+30);
+		YAxis leftAxis = mBPChart.getAxisLeft();
+		leftAxis.setAxisMaxValue(max1+30);
+		YAxis rightAxis = mBPChart.getAxisRight();
+		rightAxis.setAxisMaxValue(max2+30); 
 		 
         // create a dataset and give it a type
         LineDataSet set1 = new LineDataSet(yVals1, "收缩压");
@@ -281,6 +289,229 @@ public class ThirdFragment extends Fragment implements OnClickListener{
         // set data
         mBPChart.setData(data);
     }
+	
+	private void setHRData() {
+		
+		MyDatabaseHelper dbHelper = new MyDatabaseHelper(mActivity, "CarpOrange",
+				null, 1);
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+		if (!dbHelper.tableIsExist("BP", db)) {
+			return;
+		}
+		
+		Calendar c = Calendar.getInstance();
+		StringBuilder sb = new StringBuilder("").append(c.get(Calendar.YEAR)).append("年")
+				.append(c.get(Calendar.MONTH)).append("月%");
+		Cursor cursor = db.rawQuery("select hr,date from BP where date like '" + sb.toString() + "%'", null);
+		
+		ArrayList<String> xVals = new ArrayList<String>();
+		ArrayList<Entry> yVals1 = new ArrayList<Entry>();
+		
+		int day = DayUtil.getDaysByYearMonth(c.get(Calendar.YEAR), c.get(Calendar.MONTH));
+		for (int i = 1; i <= day; i++) {
+            xVals.add((i) + "");
+        } 
+		String[] hrs = new String[day];
+		if(cursor.moveToFirst()) {
+			do {
+				String hr = cursor.getString(0);
+				int theday = Integer.parseInt(cursor.getString(1).split("月|日")[1]);
+				
+				hrs[theday] = hr;
+				
+			} while (cursor.moveToNext());
+		}
+		
+		float max1 = 0;
+		for (int i = 0; i < day; i++) {
+			if(!TextUtils.isEmpty(hrs[i])) {
+				yVals1.add(new Entry(Float.parseFloat(hrs[i]), i+1));
+				if(Float.parseFloat(hrs[i]) > max1) {
+					max1 = Float.parseFloat(hrs[i]);
+				}
+			}
+			
+		}
+		
+		YAxis leftAxis = mHRChart.getAxisLeft();
+		leftAxis.setAxisMaxValue(max1+30);
+		 
+        // create a dataset and give it a type
+        LineDataSet set1 = new LineDataSet(yVals1, "心率");
+        set1.setAxisDependency(AxisDependency.LEFT);
+        set1.setColor(ColorTemplate.getHoloBlue());
+        set1.setCircleColor(Color.WHITE);
+        set1.setLineWidth(2f);
+        set1.setCircleSize(3f);
+        set1.setFillAlpha(65);
+        set1.setFillColor(ColorTemplate.getHoloBlue());
+        set1.setHighLightColor(Color.rgb(244, 117, 117));
+        set1.setDrawCircleHole(false);
+//        set1.setCircleHoleColor(Color.WHITE);
+
+
+        ArrayList<LineDataSet> dataSets = new ArrayList<LineDataSet>();
+        dataSets.add(set1); // add the datasets
+
+        // create a data object with the datasets
+        LineData data = new LineData(xVals, dataSets);
+        data.setValueTextColor(Color.WHITE);
+        data.setValueTextSize(9f);
+
+        // set data
+        mHRChart.setData(data);
+		
+		
+	}
+	
+	private void setGluData() {
+		
+		MyDatabaseHelper dbHelper = new MyDatabaseHelper(mActivity, "CarpOrange",
+				null, 1);
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+		if (!dbHelper.tableIsExist("Glu", db)) {
+			return;
+		}
+		
+		Calendar c = Calendar.getInstance();
+		StringBuilder sb = new StringBuilder("").append(c.get(Calendar.YEAR)).append("年")
+				.append(c.get(Calendar.MONTH)).append("月%");
+		Cursor cursor = db.rawQuery("select glu,date from Glu where date like '" + sb.toString() + "%'", null);
+		
+		ArrayList<String> xVals = new ArrayList<String>();
+		ArrayList<Entry> yVals1 = new ArrayList<Entry>();
+		
+		int day = DayUtil.getDaysByYearMonth(c.get(Calendar.YEAR), c.get(Calendar.MONTH));
+		for (int i = 1; i <= day; i++) {
+            xVals.add((i) + "");
+        } 
+		String[] hrs = new String[day];
+		if(cursor.moveToFirst()) {
+			do {
+				String hr = cursor.getString(0);
+				int theday = Integer.parseInt(cursor.getString(1).split("月|日")[1]);
+				
+				hrs[theday] = hr;
+				
+			} while (cursor.moveToNext());
+		}
+		
+		float max1 = 0;
+		for (int i = 0; i < day; i++) {
+			if(!TextUtils.isEmpty(hrs[i])) {
+				yVals1.add(new Entry(Float.parseFloat(hrs[i]), i+1));
+				if(Float.parseFloat(hrs[i]) > max1) {
+					max1 = Float.parseFloat(hrs[i]);
+				}
+			}
+			
+		}
+		
+		YAxis leftAxis = mGluChart.getAxisLeft();
+		leftAxis.setAxisMaxValue(max1+30);
+		 
+        // create a dataset and give it a type
+        LineDataSet set1 = new LineDataSet(yVals1, "血糖");
+        set1.setAxisDependency(AxisDependency.LEFT);
+        set1.setColor(ColorTemplate.getHoloBlue());
+        set1.setCircleColor(Color.WHITE);
+        set1.setLineWidth(2f);
+        set1.setCircleSize(3f);
+        set1.setFillAlpha(65);
+        set1.setFillColor(ColorTemplate.getHoloBlue());
+        set1.setHighLightColor(Color.rgb(244, 117, 117));
+        set1.setDrawCircleHole(false);
+//        set1.setCircleHoleColor(Color.WHITE);
+
+
+        ArrayList<LineDataSet> dataSets = new ArrayList<LineDataSet>();
+        dataSets.add(set1); // add the datasets
+
+        // create a data object with the datasets
+        LineData data = new LineData(xVals, dataSets);
+        data.setValueTextColor(Color.WHITE);
+        data.setValueTextSize(9f);
+
+        // set data
+        mGluChart.setData(data);
+		
+	}
+	
+	private void setWeightData() {
+		
+		MyDatabaseHelper dbHelper = new MyDatabaseHelper(mActivity, "CarpOrange",
+				null, 1);
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+		if (!dbHelper.tableIsExist("Weight", db)) {
+			return;
+		}
+		
+		Calendar c = Calendar.getInstance();
+		StringBuilder sb = new StringBuilder("").append(c.get(Calendar.YEAR)).append("年")
+				.append(c.get(Calendar.MONTH)).append("月%");
+		Cursor cursor = db.rawQuery("select weight,date from Weight where date like '" + sb.toString() + "%'", null);
+		
+		ArrayList<String> xVals = new ArrayList<String>();
+		ArrayList<Entry> yVals1 = new ArrayList<Entry>();
+		
+		int day = DayUtil.getDaysByYearMonth(c.get(Calendar.YEAR), c.get(Calendar.MONTH));
+		for (int i = 1; i <= day; i++) {
+            xVals.add((i) + "");
+        } 
+		String[] hrs = new String[day];
+		if(cursor.moveToFirst()) {
+			do {
+				String hr = cursor.getString(0);
+				int theday = Integer.parseInt(cursor.getString(1).split("月|日")[1]);
+				
+				hrs[theday] = hr;
+				
+			} while (cursor.moveToNext());
+		}
+		
+		float max1 = 0;
+		for (int i = 0; i < day; i++) {
+			if(!TextUtils.isEmpty(hrs[i])) {
+				yVals1.add(new Entry(Float.parseFloat(hrs[i]), i+1));
+				if(Float.parseFloat(hrs[i]) > max1) {
+					max1 = Float.parseFloat(hrs[i]);
+				}
+			}
+			
+		}
+		
+		YAxis leftAxis = mWeightChart.getAxisLeft();
+		leftAxis.setAxisMaxValue(max1+30);
+		 
+        // create a dataset and give it a type
+        LineDataSet set1 = new LineDataSet(yVals1, "体重");
+        set1.setAxisDependency(AxisDependency.LEFT);
+        set1.setColor(ColorTemplate.getHoloBlue());
+        set1.setCircleColor(Color.WHITE);
+        set1.setLineWidth(2f);
+        set1.setCircleSize(3f);
+        set1.setFillAlpha(65);
+        set1.setFillColor(ColorTemplate.getHoloBlue());
+        set1.setHighLightColor(Color.rgb(244, 117, 117));
+        set1.setDrawCircleHole(false);
+//        set1.setCircleHoleColor(Color.WHITE);
+
+
+        ArrayList<LineDataSet> dataSets = new ArrayList<LineDataSet>();
+        dataSets.add(set1); // add the datasets
+
+        // create a data object with the datasets
+        LineData data = new LineData(xVals, dataSets);
+        data.setValueTextColor(Color.WHITE);
+        data.setValueTextSize(9f);
+
+        // set data
+        mWeightChart.setData(data);
+		
+	}
 	
 	@Override
 	public void onResume() {
