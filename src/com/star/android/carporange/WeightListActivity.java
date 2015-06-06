@@ -67,8 +67,8 @@ public class WeightListActivity extends Activity {
 				Bundle bundle = new Bundle();
 				bundle.putString("id", mCursor.getString(0));
 				bundle.putString("weight", mCursor.getString(1));
-				bundle.putString("date", mCursor.getString(3));
-				bundle.putString("time", mCursor.getString(4));
+				bundle.putString("date", mCursor.getString(2));
+				bundle.putString("time", mCursor.getString(3));
 				Intent i = new Intent(WeightListActivity.this, WeightActivity.class);
 				i.putExtra("bundle", bundle);
 				startActivityForResult(i, 1);
