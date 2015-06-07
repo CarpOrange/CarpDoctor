@@ -33,11 +33,16 @@ import com.star.android.carporange.BPListActivity;
 import com.star.android.carporange.GluListActivity;
 import com.star.android.carporange.MainActivity;
 import com.star.android.carporange.R;
+import com.star.android.carporange.WeightActivity;
 import com.star.android.carporange.WeightListActivity;
 import com.star.android.carporange.utils.DayUtil;
 import com.star.android.carporange.utils.MyDatabaseHelper;
 
 public class ThirdFragment extends Fragment implements OnClickListener{
+	
+	public static final int BPACTIVITY = 11;
+	public static final int GLUACTIVITY = 12;
+	public static final int WEIGHTACTIVITY = 13;
 	
 	private MainActivity mActivity;
 	private View mContentView;
@@ -174,20 +179,20 @@ public class ThirdFragment extends Fragment implements OnClickListener{
 		case R.id.rlyt_bp:
 			Intent i = new Intent(mActivity, BPListActivity.class);
 			i.putExtra("action", "bp");
-			startActivity(i);
+			startActivityForResult(i, BPACTIVITY);
 			break;
 		case R.id.rlyt_hr:
 			i = new Intent(mActivity, BPListActivity.class);
 			i.putExtra("action", "hr");
-			startActivity(i);
+			startActivityForResult(i, BPACTIVITY);
 			break;
 		case R.id.rlyt_glu:
 			i = new Intent(mActivity, GluListActivity.class);
-			startActivity(i);
+			startActivityForResult(i, GLUACTIVITY);
 			break;
 		case R.id.rlyt_weight:
 			i = new Intent(mActivity, WeightListActivity.class);
-			startActivity(i);
+			startActivityForResult(i, WEIGHTACTIVITY);
 			break;
 		}
 	}
@@ -525,6 +530,22 @@ public class ThirdFragment extends Fragment implements OnClickListener{
 	@Override
 	public void onResume() {
 		super.onResume();
-		setBPData();
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		switch(requestCode) {
+		case BPACTIVITY:
+			setBPData();
+			setHRData();
+			break;
+		case GLUACTIVITY:
+			setGluData();
+			break;
+		case WEIGHTACTIVITY:
+			setWeightData();
+			break;
+		}
 	}
 }
