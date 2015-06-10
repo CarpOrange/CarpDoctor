@@ -102,7 +102,7 @@ public class BPActivity extends Activity implements OnClickListener{
 			
 			Calendar c = Calendar.getInstance();
 			mYear = c.get(Calendar.YEAR);
-			mMonth = c.get(Calendar.MONTH);
+			mMonth = c.get(Calendar.MONTH) + 1;
 			mDay = c.get(Calendar.DAY_OF_MONTH);
 			updateDate();
 			
@@ -138,7 +138,7 @@ public class BPActivity extends Activity implements OnClickListener{
 	public void onClick(View view) {
 		switch(view.getId()) {
 		case R.id.et_date:
-			new DatePickerDialog(this, mDateSetListener, mYear, mMonth, mDay).show();
+			new DatePickerDialog(this, mDateSetListener, mYear, mMonth - 1, mDay).show();
 			break;
 		case R.id.et_time:
 			new TimePickerDialog(this, mTimeSetListener, mHour, mMinute, true).show();
@@ -198,7 +198,7 @@ public class BPActivity extends Activity implements OnClickListener{
 		@Override
 		public void onDateSet(DatePicker view, int year, int month, int day) {
 			mYear = year;
-			mMonth = month;
+			mMonth = month + 1;
 			mDay = day;
 			updateDate();
 		}

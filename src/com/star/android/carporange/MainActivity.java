@@ -20,7 +20,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 import cn.bmob.v3.Bmob;
 
 import com.baidu.mapapi.SDKInitializer;
@@ -28,7 +27,6 @@ import com.star.android.carporange.fragment.FirstFragment;
 import com.star.android.carporange.fragment.FourthFragment;
 import com.star.android.carporange.fragment.SecondFragment;
 import com.star.android.carporange.fragment.ThirdFragment;
-import com.star.android.carporange.javabean.HealthInfo;
 import com.star.android.carporange.service.CoreService;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
@@ -58,7 +56,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		Bmob.initialize(this, "41c59442c6ffdc8b30fd071d273fdd38");
 		SDKInitializer.initialize(getApplicationContext());
 		Intent bindIntent = new Intent(this, CoreService.class);
-		bindService(bindIntent, conn, BIND_AUTO_CREATE);
+//		bindService(bindIntent, conn, BIND_AUTO_CREATE);
 		buildView();
 	}
 	

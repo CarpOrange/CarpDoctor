@@ -209,14 +209,15 @@ public class ThirdFragment extends Fragment implements OnClickListener{
 		
 		Calendar c = Calendar.getInstance();
 		StringBuilder sb = new StringBuilder("").append(c.get(Calendar.YEAR)).append("年")
-				.append(c.get(Calendar.MONTH)).append("月%");
-		Cursor cursor = db.rawQuery("select sbp,dbp,date from BP where date like '" + sb.toString() + "%'", null);
+				.append(c.get(Calendar.MONTH) + 1).append("月%");
 		
+		Cursor cursor = db.rawQuery("select sbp,dbp,date from BP where date like '" + sb.toString() + "%'", null);
+		 
 		ArrayList<String> xVals = new ArrayList<String>();
 		ArrayList<Entry> yVals1 = new ArrayList<Entry>();
 		ArrayList<Entry> yVals2 = new ArrayList<Entry>();
 		
-		int day = DayUtil.getDaysByYearMonth(c.get(Calendar.YEAR), c.get(Calendar.MONTH));
+		int day = DayUtil.getDaysByYearMonth(c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1);
 		for (int i = 1; i <= day; i++) {
             xVals.add((i) + "");
         } 
@@ -228,8 +229,8 @@ public class ThirdFragment extends Fragment implements OnClickListener{
 				String dbp = cursor.getString(1);
 				int theday = Integer.parseInt(cursor.getString(2).split("月|日")[1]);
 				
-				sbps[theday] = sbp;
-				dbps[theday] = dbp;
+				sbps[theday - 1] = sbp;
+				dbps[theday - 1] = dbp;
 				
 			} while (cursor.moveToNext());
 		}
@@ -238,7 +239,7 @@ public class ThirdFragment extends Fragment implements OnClickListener{
 		float max2 = 0;
 		for (int i = 0; i < day; i++) {
 			if(!TextUtils.isEmpty(sbps[i])) {
-				yVals1.add(new Entry(Float.parseFloat(sbps[i]), i+1));
+				yVals1.add(new Entry(Float.parseFloat(sbps[i]), i));
 				if(Float.parseFloat(sbps[i]) > max1) {
 					max1 = Float.parseFloat(sbps[i]);
 				}
@@ -307,13 +308,13 @@ public class ThirdFragment extends Fragment implements OnClickListener{
 		
 		Calendar c = Calendar.getInstance();
 		StringBuilder sb = new StringBuilder("").append(c.get(Calendar.YEAR)).append("年")
-				.append(c.get(Calendar.MONTH)).append("月%");
+				.append(c.get(Calendar.MONTH) + 1).append("月%");
 		Cursor cursor = db.rawQuery("select hr,date from BP where date like '" + sb.toString() + "%'", null);
 		
 		ArrayList<String> xVals = new ArrayList<String>();
 		ArrayList<Entry> yVals1 = new ArrayList<Entry>();
 		
-		int day = DayUtil.getDaysByYearMonth(c.get(Calendar.YEAR), c.get(Calendar.MONTH));
+		int day = DayUtil.getDaysByYearMonth(c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1);
 		for (int i = 1; i <= day; i++) {
             xVals.add((i) + "");
         } 
@@ -323,7 +324,7 @@ public class ThirdFragment extends Fragment implements OnClickListener{
 				String hr = cursor.getString(0);
 				int theday = Integer.parseInt(cursor.getString(1).split("月|日")[1]);
 				
-				hrs[theday] = hr;
+				hrs[theday - 1] = hr;
 				
 			} while (cursor.moveToNext());
 		}
@@ -331,7 +332,7 @@ public class ThirdFragment extends Fragment implements OnClickListener{
 		float max1 = 0;
 		for (int i = 0; i < day; i++) {
 			if(!TextUtils.isEmpty(hrs[i])) {
-				yVals1.add(new Entry(Float.parseFloat(hrs[i]), i+1));
+				yVals1.add(new Entry(Float.parseFloat(hrs[i]), i));
 				if(Float.parseFloat(hrs[i]) > max1) {
 					max1 = Float.parseFloat(hrs[i]);
 				}
@@ -385,33 +386,31 @@ public class ThirdFragment extends Fragment implements OnClickListener{
 		
 		Calendar c = Calendar.getInstance();
 		StringBuilder sb = new StringBuilder("").append(c.get(Calendar.YEAR)).append("年")
-				.append(c.get(Calendar.MONTH)).append("月%");
+				.append(c.get(Calendar.MONTH) + 1).append("月%");
 		Cursor cursor = db.rawQuery("select glu,date from Glu where date like '" + sb.toString() + "%'", null);
 		
 		ArrayList<String> xVals = new ArrayList<String>();
 		ArrayList<Entry> yVals1 = new ArrayList<Entry>();
 		
-		int day = DayUtil.getDaysByYearMonth(c.get(Calendar.YEAR), c.get(Calendar.MONTH));
+		int day = DayUtil.getDaysByYearMonth(c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1);
 		for (int i = 1; i <= day; i++) {
             xVals.add((i) + "");
         } 
-		String[] hrs = new String[day];
+		String[] glus = new String[day];
 		if(cursor.moveToFirst()) {
 			do {
-				String hr = cursor.getString(0);
+				String glu = cursor.getString(0);
 				int theday = Integer.parseInt(cursor.getString(1).split("月|日")[1]);
-				
-				hrs[theday] = hr;
-				
+				glus[theday - 1] = glu;
 			} while (cursor.moveToNext());
 		}
 		
 		float max1 = 0;
 		for (int i = 0; i < day; i++) {
-			if(!TextUtils.isEmpty(hrs[i])) {
-				yVals1.add(new Entry(Float.parseFloat(hrs[i]), i+1));
-				if(Float.parseFloat(hrs[i]) > max1) {
-					max1 = Float.parseFloat(hrs[i]);
+			if(!TextUtils.isEmpty(glus[i])) {
+				yVals1.add(new Entry(Float.parseFloat(glus[i]), i));
+				if(Float.parseFloat(glus[i]) > max1) {
+					max1 = Float.parseFloat(glus[i]);
 				}
 			}
 			
@@ -462,33 +461,33 @@ public class ThirdFragment extends Fragment implements OnClickListener{
 		
 		Calendar c = Calendar.getInstance();
 		StringBuilder sb = new StringBuilder("").append(c.get(Calendar.YEAR)).append("年")
-				.append(c.get(Calendar.MONTH)).append("月%");
+				.append(c.get(Calendar.MONTH) + 1).append("月%");
 		Cursor cursor = db.rawQuery("select weight,date from Weight where date like '" + sb.toString() + "%'", null);
 		
 		ArrayList<String> xVals = new ArrayList<String>();
 		ArrayList<Entry> yVals1 = new ArrayList<Entry>();
 		
-		int day = DayUtil.getDaysByYearMonth(c.get(Calendar.YEAR), c.get(Calendar.MONTH));
+		int day = DayUtil.getDaysByYearMonth(c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1);
 		for (int i = 1; i <= day; i++) {
             xVals.add((i) + "");
         } 
-		String[] hrs = new String[day];
+		String[] weights = new String[day];
 		if(cursor.moveToFirst()) {
 			do {
-				String hr = cursor.getString(0);
+				String weight = cursor.getString(0);
 				int theday = Integer.parseInt(cursor.getString(1).split("月|日")[1]);
 				
-				hrs[theday] = hr;
+				weights[theday - 1] = weight;
 				
 			} while (cursor.moveToNext());
 		}
 		
 		float max1 = 0;
 		for (int i = 0; i < day; i++) {
-			if(!TextUtils.isEmpty(hrs[i])) {
-				yVals1.add(new Entry(Float.parseFloat(hrs[i]), i+1));
-				if(Float.parseFloat(hrs[i]) > max1) {
-					max1 = Float.parseFloat(hrs[i]);
+			if(!TextUtils.isEmpty(weights[i])) {
+				yVals1.add(new Entry(Float.parseFloat(weights[i]), i));
+				if(Float.parseFloat(weights[i]) > max1) {
+					max1 = Float.parseFloat(weights[i]);
 				}
 			}
 			

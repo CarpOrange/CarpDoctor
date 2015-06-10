@@ -73,7 +73,7 @@ public class FirstFragment extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		mActivity = (MainActivity) getActivity();
 		mContentView = getView();
-		mLoadBinder = mActivity.mLoadBinder;
+//		mLoadBinder = mActivity.mLoadBinder;
 		buildView();
 		initEvents();
 	}
