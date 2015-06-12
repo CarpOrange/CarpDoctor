@@ -78,10 +78,9 @@ public class MedicineActivity extends Activity {
 
 	private void initSqlite(SQLiteDatabase db) {
 		final SQLiteDatabase mDb = db;
-		String sql = "create table Medicine ("
+		final String sql = "create table Medicine ("
 				+ "_id integer primary key autoincrement ,"
 				+ "medicine_name text ," + "medicine_info text) ;";
-		mDb.execSQL(sql);
 		BmobQuery<Medicine> query = new BmobQuery<Medicine>("Medicine");
 		query.findObjects(MedicineActivity.this, new FindListener<Medicine>() {
 
@@ -95,6 +94,7 @@ public class MedicineActivity extends Activity {
 			public void onSuccess(List<Medicine> list) {
 				Toast.makeText(MedicineActivity.this, "初始化成功",
 						Toast.LENGTH_SHORT).show();
+				mDb.execSQL(sql);
 				for (Medicine medicine : list) {
 					String medicine_name = medicine.getMedicine_name();
 					String medicine_info = medicine.getMedicine_info();
