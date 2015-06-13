@@ -81,8 +81,6 @@ public class NewRecordActivity extends Activity implements OnClickListener {
 
 	private void buildView() {
 		
-		
-		
 		mEtHospital = (EditText) findViewById(R.id.et_hospital);
 		mSpinnerDepartment = (Spinner) findViewById(R.id.spinner_department);
 		mEtIllness = (EditText) findViewById(R.id.et_illness);
@@ -137,7 +135,7 @@ public class NewRecordActivity extends Activity implements OnClickListener {
 		mUsername = getIntent().getStringExtra("username");
 		Calendar c = Calendar.getInstance();
 		mYear = c.get(Calendar.YEAR);
-		mMonth = c.get(Calendar.MONTH);
+		mMonth = c.get(Calendar.MONTH) + 1;
 		mDay = c.get(Calendar.DAY_OF_MONTH);
 		updateDateText();
 		
@@ -156,7 +154,7 @@ public class NewRecordActivity extends Activity implements OnClickListener {
 		switch (view.getId()) {
 		case R.id.button_datePicker:
 			new DatePickerDialog(NewRecordActivity.this, mMyDateSetListener,
-					mYear, mMonth, mDay).show();
+					mYear, mMonth - 1, mDay).show();
 			break;
 
 		case R.id.button_camera:
@@ -238,7 +236,7 @@ public class NewRecordActivity extends Activity implements OnClickListener {
 		@Override
 		public void onDateSet(DatePicker arg0, int year, int month, int day) {
 			mYear = year;
-			mMonth = month;
+			mMonth = month + 1;
 			mDay = day;
 			updateDateText();
 		}

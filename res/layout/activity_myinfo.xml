@@ -90,6 +90,7 @@
         <EditText
             android:id="@+id/et_height"
         	style="@style/Register_Edit"
+        	android:inputType="numberDecimal"
         	android:hint="请输入你的身高。。。" />
     </LinearLayout>
     
@@ -107,6 +108,7 @@
         <EditText
             android:id="@+id/et_weight"
         	style="@style/Register_Edit"
+        	android:inputType="numberDecimal"
         	android:hint="请输入你的体重。。。" />
     </LinearLayout>
     

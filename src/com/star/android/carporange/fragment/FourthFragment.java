@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.star.android.carporange.HealthValueActivity;
 import com.star.android.carporange.LoginActivity;
@@ -73,6 +74,7 @@ public class FourthFragment extends Fragment implements OnClickListener {
 		mHealthValueRlyt.setOnClickListener(this);
 		mMedicalRecordRlyt.setOnClickListener(this);
 		mMedicineRemindRlyt.setOnClickListener(this);
+		mOtherRlyt.setOnClickListener(this);
 	}
 
 	private void buildView() {
@@ -151,6 +153,9 @@ public class FourthFragment extends Fragment implements OnClickListener {
 //			i.putExtra("username", mUsernameText.getText().toString());
 			i = new Intent(AlarmClock.ACTION_SET_ALARM);
 			startActivity(i);
+		case R.id.rlyt_other:
+			Toast.makeText(mActivity, "此功能尚在完善中，敬请期待", Toast.LENGTH_SHORT).show();
+			break;
 		default:
 			break;
 		}

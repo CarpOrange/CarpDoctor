@@ -16,6 +16,7 @@
         <EditText
             android:id="@+id/et_age"
         	style="@style/Register_Edit"
+        	android:inputType="number"
         	android:hint="" />
         <RadioGroup
         	android:layout_width="wrap_content"
@@ -45,6 +46,7 @@
         <EditText
             android:id="@+id/et_wbc"
         	style="@style/Register_Edit"
+        	android:inputType="numberDecimal"
         	android:hint="" />
         <TextView
             android:layout_width="wrap_content"
@@ -67,6 +69,7 @@
         <EditText
             android:id="@+id/et_rbc"
         	style="@style/Register_Edit"
+        	android:inputType="numberDecimal"
         	android:hint="" />
         <TextView
             android:layout_width="wrap_content"
@@ -89,6 +92,7 @@
         <EditText
             android:id="@+id/et_plt"
         	style="@style/Register_Edit"
+        	android:inputType="numberDecimal"
         	android:hint="" />
         <TextView
             android:layout_width="wrap_content"
@@ -111,6 +115,7 @@
         <EditText
             android:id="@+id/et_ly"
         	style="@style/Register_Edit"
+        	android:inputType="numberDecimal"
         	android:hint="" />
         <TextView
             android:layout_width="wrap_content"
