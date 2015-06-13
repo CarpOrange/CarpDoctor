@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Calendar;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.ContentValues;
@@ -31,8 +30,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.star.android.carporange.utils.MyDatabaseHelper;
+import com.star.android.carporange.widget.CarpActivity;
 
-public class NewRecordActivity extends Activity implements OnClickListener {
+public class NewRecordActivity extends CarpActivity implements OnClickListener {
 	
 	private static final int CAMERA = 1;
 	private static final String CREATE_MEDICAL_RECORD = "create table Medical_Record ("

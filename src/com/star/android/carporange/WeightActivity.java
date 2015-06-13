@@ -22,8 +22,9 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.star.android.carporange.utils.MyDatabaseHelper;
+import com.star.android.carporange.widget.CarpActivity;
 
-public class WeightActivity extends Activity implements OnClickListener{
+public class WeightActivity extends CarpActivity implements OnClickListener{
 	
 	private static final String CREATE_WEIGHT = "create table Weight ("
 			+ "_id integer primary key autoincrement,"

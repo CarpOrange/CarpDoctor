@@ -1,6 +1,5 @@
 package com.star.android.carporange;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,8 +13,9 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import com.star.android.carporange.utils.MyDatabaseHelper;
+import com.star.android.carporange.widget.CarpActivity;
 
-public class BPListActivity extends Activity {
+public class BPListActivity extends CarpActivity {
 
 	private Button mNewRecordButton;
 	private ListView mListView;

@@ -1,8 +1,5 @@
 package com.star.android.carporange;
 
-import com.star.android.carporange.utils.MyDatabaseHelper;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,12 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.AdapterView.OnItemClickListener;
 
-public class GluListActivity extends Activity {
+import com.star.android.carporange.utils.MyDatabaseHelper;
+import com.star.android.carporange.widget.CarpActivity;
+
+public class GluListActivity extends CarpActivity {
 	
 	private Button mNewRecordButton;
 	private ListView mListView;

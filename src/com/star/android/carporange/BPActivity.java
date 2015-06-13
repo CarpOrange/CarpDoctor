@@ -2,9 +2,6 @@ package com.star.android.carporange;
 
 import java.util.Calendar;
 
-import com.star.android.carporange.utils.MyDatabaseHelper;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -25,7 +22,10 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-public class BPActivity extends Activity implements OnClickListener{
+import com.star.android.carporange.utils.MyDatabaseHelper;
+import com.star.android.carporange.widget.CarpActivity;
+
+public class BPActivity extends CarpActivity implements OnClickListener{
 	
 	private static final String CREATE_BP = "create table BP ("
 			+ "_id integer primary key autoincrement,"

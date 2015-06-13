@@ -2,21 +2,12 @@ package com.star.android.carporange;
 
 import java.util.Calendar;
 
-import com.star.android.carporange.service.CoreService;
-import com.star.android.carporange.service.MyTimeReceiver;
-
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
-import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.text.format.Time;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,7 +16,10 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-public class NewRemindActivity extends Activity implements OnClickListener{
+import com.star.android.carporange.service.MyTimeReceiver;
+import com.star.android.carporange.widget.CarpActivity;
+
+public class NewRemindActivity extends CarpActivity implements OnClickListener{
 	
 	private EditText mMedicineET;
 	private EditText mRemindTimeET;

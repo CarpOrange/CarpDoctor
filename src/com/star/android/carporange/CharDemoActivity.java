@@ -10,12 +10,13 @@ import org.achartengine.model.XYSeries;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
-public class CharDemoActivity extends Activity {
+import com.star.android.carporange.widget.CarpActivity;
+
+public class CharDemoActivity extends CarpActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

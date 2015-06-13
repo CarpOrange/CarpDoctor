@@ -1,12 +1,14 @@
 package com.star.android.carporange;
 
+import com.star.android.carporange.widget.CarpActivity;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.TextView;
 
-public class ReadingLaboratoryActivity extends Activity {
+public class ReadingLaboratoryActivity extends  CarpActivity {
 	
 	private TextView mReadingLaboratoryText;
 	private TextView mPossibleIllnessText;

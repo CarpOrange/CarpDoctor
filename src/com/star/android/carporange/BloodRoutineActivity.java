@@ -1,10 +1,8 @@
 package com.star.android.carporange;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -12,7 +10,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-public class BloodRoutineActivity extends Activity {
+import com.star.android.carporange.widget.CarpActivity;
+
+public class BloodRoutineActivity extends CarpActivity {
 	
 	String mReadingLaboratory = null;
 	String mPossibleIllness = null;

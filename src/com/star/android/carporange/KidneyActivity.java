@@ -1,6 +1,5 @@
 package com.star.android.carporange;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,9 +13,10 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.star.android.carporange.widget.CarpActivity;
 import com.star.android.carporange.widget.SwitchButton;
 
-public class KidneyActivity extends Activity {
+public class KidneyActivity extends CarpActivity {
 	
 	private EditText mAgeEt;
 	private EditText mBunEt;

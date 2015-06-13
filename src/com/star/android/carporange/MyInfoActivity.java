@@ -3,7 +3,6 @@ package com.star.android.carporange;
 import java.util.Calendar;
 import java.util.List;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Intent;
@@ -23,8 +22,9 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.UpdateListener;
 
 import com.star.android.carporange.javabean.User;
+import com.star.android.carporange.widget.CarpActivity;
 
-public class MyInfoActivity extends Activity implements OnClickListener {
+public class MyInfoActivity extends CarpActivity implements OnClickListener {
 
 	private String mObjectId;
 

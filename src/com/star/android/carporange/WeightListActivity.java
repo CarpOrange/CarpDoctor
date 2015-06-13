@@ -1,6 +1,7 @@
 package com.star.android.carporange;
 
 import com.star.android.carporange.utils.MyDatabaseHelper;
+import com.star.android.carporange.widget.CarpActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,7 +16,7 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class WeightListActivity extends Activity {
+public class WeightListActivity extends CarpActivity {
 	
 	private Button mNewRecordButton;
 	private ListView mListView;

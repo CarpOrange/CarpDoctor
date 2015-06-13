@@ -17,8 +17,9 @@ import cn.bmob.v3.listener.CountListener;
 import cn.bmob.v3.listener.SaveListener;
 
 import com.star.android.carporange.javabean.User;
+import com.star.android.carporange.widget.CarpActivity;
 
-public class RegisterActivity extends Activity {
+public class RegisterActivity extends CarpActivity {
 	
 	private EditText mUsernameText;
 	private EditText mPasswordText;

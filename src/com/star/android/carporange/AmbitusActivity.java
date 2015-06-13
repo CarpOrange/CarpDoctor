@@ -1,12 +1,12 @@
 package com.star.android.carporange;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
+
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -30,8 +30,9 @@ import com.baidu.mapapi.search.poi.PoiDetailSearchOption;
 import com.baidu.mapapi.search.poi.PoiNearbySearchOption;
 import com.baidu.mapapi.search.poi.PoiResult;
 import com.baidu.mapapi.search.poi.PoiSearch;
+import com.star.android.carporange.widget.CarpActivity;
 
-@SuppressLint("HandlerLeak") public class AmbitusActivity extends Activity {
+@SuppressLint("HandlerLeak") public class AmbitusActivity extends CarpActivity {
 	
 	private final int MAKE_TOAST = 1;
 	

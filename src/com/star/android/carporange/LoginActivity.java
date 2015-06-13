@@ -1,8 +1,8 @@
 package com.star.android.carporange;
 
 import java.util.List;
+
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -11,9 +11,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -21,9 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
-import com.star.android.carporange.javabean.User;
 
-@SuppressLint("HandlerLeak") public class LoginActivity extends Activity implements OnClickListener {
+import com.star.android.carporange.javabean.User;
+import com.star.android.carporange.widget.CarpActivity;
+
+@SuppressLint("HandlerLeak") public class LoginActivity extends CarpActivity implements OnClickListener {
 	
 	private final int MAKE_TOAST = 1;
 	

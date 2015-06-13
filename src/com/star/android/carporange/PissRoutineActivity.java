@@ -1,6 +1,5 @@
 package com.star.android.carporange;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,9 +9,10 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
+import com.star.android.carporange.widget.CarpActivity;
 import com.star.android.carporange.widget.SwitchButton;
 
-public class PissRoutineActivity extends Activity implements OnCheckedChangeListener{
+public class PissRoutineActivity extends CarpActivity implements OnCheckedChangeListener{
 	
 	private TextView mBloText;
 	private TextView mWbcText;

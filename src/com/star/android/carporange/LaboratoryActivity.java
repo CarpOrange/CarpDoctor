@@ -1,13 +1,14 @@
 package com.star.android.carporange;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 
-public class LaboratoryActivity extends Activity implements OnClickListener{
+import com.star.android.carporange.widget.CarpActivity;
+
+public class LaboratoryActivity extends CarpActivity implements OnClickListener{
 	
 	private RelativeLayout mFirstRlyt;
 	private RelativeLayout mBloodRlyt;

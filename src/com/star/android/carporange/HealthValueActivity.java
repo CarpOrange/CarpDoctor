@@ -2,7 +2,6 @@ package com.star.android.carporange;
 
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,8 +12,9 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 
 import com.star.android.carporange.javabean.User;
+import com.star.android.carporange.widget.CarpActivity;
 
-public class HealthValueActivity extends Activity {
+public class HealthValueActivity extends CarpActivity {
 	
 	private static final int UPDATE_UI = 1;
 	

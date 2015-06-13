@@ -1,14 +1,15 @@
 package com.star.android.carporange;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.star.android.carporange.widget.CarpActivity;
+
 @SuppressLint("SetJavaScriptEnabled") 
-public class MyWebViewActivity extends Activity {
+public class MyWebViewActivity extends CarpActivity {
 	
 	private WebView mWebView;
 	@Override

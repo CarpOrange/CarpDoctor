@@ -3,7 +3,6 @@ package com.star.android.carporange;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -23,8 +22,9 @@ import cn.bmob.v3.listener.FindListener;
 
 import com.star.android.carporange.javabean.Illness;
 import com.star.android.carporange.utils.MyDatabaseHelper;
+import com.star.android.carporange.widget.CarpActivity;
 
-public class IllnessActivity extends Activity implements OnClickListener {
+public class IllnessActivity extends CarpActivity implements OnClickListener {
 	
 	private MyDatabaseHelper dbHelper;
 	private TextView peopleTextView;
