@@ -28,7 +28,7 @@ public class WeightListActivity extends CarpActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_record_medical);
 		buildView();
-		initEvents();
+		initEvents(); 
 	}
 	
 	private void buildView() {
@@ -44,7 +44,7 @@ public class WeightListActivity extends CarpActivity {
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 
 		if (!dbHelper.tableIsExist("Weight", db)) {
-			return;
+			return; 
 		}
 
 		mCursor = db.rawQuery("select * from Weight", null);
